@@ -1,31 +1,13 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import './index.css';
-// import App from './App';
-// import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Preloader from './components/Preloader/Preloader'
+import Timer from './components/Countdown/Timer'
+import Optin from './components/Optin/Optin'
+import reportWebVitals from './reportWebVitals'
 
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
+import './App.css'
 
-// // If you want to start measuring performance in your app, pass a function
-// // to log results (for example: reportWebVitals(console.log))
-// // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
-
-import React from "react";
-import ReactDOM from "react-dom";
-import Preloader from "./components/Preloader/Preloader";
-import Timer from "./components/Countdown/Timer";
-import Optin from "./components/Optin/Optin";
-import reportWebVitals from './reportWebVitals';
-
-import "./App.css";
-
-function App() {
+function App () {
   return (
     <div className="App">
       <div className="container">
@@ -39,9 +21,9 @@ function App() {
         <Preloader />
       </div>
     </div>
-  );
+  )
 }
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
-reportWebVitals();
+const rootElement = document.getElementById('root')
+ReactDOM.render(<App />, rootElement)
+reportWebVitals()
