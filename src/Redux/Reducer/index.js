@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
-import registerReducer from './register'
+import movieReducer from './movie'
 import authReducer from './auth'
-import movieReducer from './movieDetail'
+import orderReducer from './order'
 
 const reducer = combineReducers({
   auth: authReducer,
-  register: registerReducer,
-  movieDetail: movieReducer
+  order: orderReducer,
+  movie: movieReducer
 })
 
 export default reducer
