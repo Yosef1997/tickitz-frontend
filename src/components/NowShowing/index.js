@@ -13,7 +13,7 @@ export default class index extends Component {
             <p className="nowShow-textLeft">Now Showing</p>
           </Col>
           <Col className="nowShow-col2">
-            <Link>
+            <Link to="/viewall">
               <p className="nowShow-textRight">View All</p>
             </Link>
           </Col>
@@ -21,7 +21,7 @@ export default class index extends Component {
         <Row>
           <Col className="nowShow-col3">
             <div className="nowShow-card">
-              <Link>
+              <Link to="/movie">
                 <img src={Spiderman2} alt='...' className="nowShow-img" />
               </Link>
             </div>

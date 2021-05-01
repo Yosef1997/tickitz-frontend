@@ -13,7 +13,7 @@ export default class index extends Component {
             <p className="Upcoming-textLeft">Upcoming Movies</p>
           </Col>
           <Col className="Upcoming-col2">
-            <Link>
+            <Link to="/viewall">
               <p className="Upcoming-textRight">View All</p>
             </Link>
           </Col>

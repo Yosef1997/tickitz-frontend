@@ -42,7 +42,7 @@ class Navbar extends Component {
               <FormControl type="text" placeholder="Search" className="input-search-mobile sm-2" />
               <Button type="submit" className="btn-search"><img src={Search} alt=".." /></Button>{' '}
             </div>
-            <Link to="/sign-up"><Button type="submit" className="btn-signup ml-2 p-2">Sign up</Button>{' '}</Link>
+            <Link to="/register"><Button type="submit" className="btn-signup ml-2 p-2">Sign up</Button>{' '}</Link>
           </Nav>
         </NavbarBrowser.Collapse>
       </NavbarBrowser>

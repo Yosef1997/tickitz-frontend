@@ -6,6 +6,14 @@ import store from './Redux/store'
 
 // import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import Home from './Pages/Home'
+import Register from './Pages/Register'
+import Login from './Pages/Login'
+import Movie from './Pages/Movie'
+import ViewAll from './Pages/ViewAll'
+import Seat from './Pages/Seat'
+import Payment from './Pages/Payment'
+import Ticket from './Pages/Ticket'
+import Profile from './Pages/Profile'
 
 class App extends Component {
   render () {
@@ -14,6 +22,14 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/register" component={Register} />
+            <Route path="/login" component={Login} />
+            <Route path="/movie" exact component={Movie} />
+            <Route path="/viewall" component={ViewAll} />
+            <Route path="/movie/seat/" exact component={Seat} />
+            <Route path="/movie/seat/payment" exact component={Payment} />
+            <Route path="/movie/seat/payment/ticket" exact component={Ticket} />
+            <Route path="/Profile" component={Profile} />
           </Switch>
         </BrowserRouter>
       </Provider>
@@ -23,30 +39,3 @@ class App extends Component {
 }
 
 export default App
-// import React from "react";
-// import ReactDOM from "react-dom";
-// import Preloader from "./components/Preloader/Preloader";
-// import Timer from "./components/Countdown/Timer";
-// import Optin from "./components/Optin/Optin";
-
-// import "./App.css";
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <div className="container">
-//         <h1>
-//           Website
-//           <br />
-//           Coming Soon
-//         </h1>
-//         <Timer />
-//         <Optin />
-//         <Preloader />
-//       </div>
-//     </div>
-//   );
-// }
-
-// const rootElement = document.getElementById("root");
-// ReactDOM.render(<App />, rootElement);
