@@ -1,61 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
 
-.img1-footer {
-    Width: 170,23px;
-    Height: 43,94px;
+.footer-img {
+    Width: 170;
+    Height: 45;
+    margin-bottom: 30px;
   }
-  .sectionFooter {
+  .footer {
     padding: 50px 100px 0px;
   }
-  .sectionFooter .col10{
-    padding: 10px 60px;
+  .footer-col1{
     font-family: 'Mulish',sans-serif;
     font-size: 16px;
     color: #6E7191;
     text-align: left;
+    padding-top: auto;
   }
-  .sectionFooter .col12 p{
+  .footer-col2 p{
     font-family: 'Mulish',sans-serif;
     font-size: 16px;
     color: #000000;
     font-weight: bold;
     text-align: left;
   }
-  .sectionFooter .col12 a {
+  .footer-col2 a {
     font-family: 'Mulish',sans-serif;
     font-size: 14px;
     color: #4E4B66;
     display: block;
     margin-top: 15px;
   }
-  .sectionFooter .col3 p{
+  .footer-col3 p{
     font-family: 'Mulish',sans-serif;
     font-size: 16px;
+    font-weight: bold;
     color: #000000;
     text-align: left;
   }
-  .sectionFooter .col3 a {
+  .footer-col3 a {
     display: block;
     margin-top: 25px;
   }
-  .sectionFooter .col11 p{
+  .footer-col4 p{
     font-family: 'Mulish',sans-serif;
     font-size: 16px;
     color: #000000;
     text-align: left;
     font-weight: bold;
   }
-  .sectionFooter .col11 a{
+  .footer-col4 a{
     font-family: 'Mulish',sans-serif;
     font-size: 14px;
     color: #4E4B66;
-    display: block;
+    display: flex;
     margin-top: 25px;
   }
   .footer-mobile {
     display: none;
   }
-  .sectionFooter .col5 p{
+  .footer .col5 p{
     font-family: 'Mulish', sans-serif;
     font-size: 14px;
     color: #4E4B66;
@@ -64,5 +66,38 @@
   
 
 @media only screen and (max-width: 992px) {
+  .footer {
+    padding: 50px 25px;
+  }
+  .footer-col2 p{
+    margin-top: 40px;
+  }
+  .footer-col2 a{
+    display: inline;
+    margin-right: 35px;
+  }
+  .footer-col3 p{
+    margin-top: 40px;
+  }
+  .footer-col3 a{
+    display: inline;
+    margin-right: 25px;
+  }
 
+  .footer-col4 p{
+    margin-top: 40px;
+  }
+
+  .footer-col4 a {
+    display: inline;
+    margin-right: 40px;
+  }
+
+  .footer-col4 a .mobile {
+    display: none;
+  }
+
+  .img2-footer {
+    width: 82px;
+  }
 }
