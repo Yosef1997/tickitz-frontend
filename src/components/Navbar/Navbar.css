@@ -2,7 +2,7 @@
 
 
 .containerNavbar{
-    padding: 35px 130px;
+    padding: 20px 100px;
 }
 .btn-signup-mobile {
     display: none;
@@ -22,7 +22,8 @@
 .search-web {
     border: 1px rgb(192, 190, 190) solid;
     border-radius: 5px;
-    display: inline;
+    display: flex;
+    height: 40px;
 }
 .btn-search {
     background-color: white;
@@ -35,7 +36,8 @@
 .btn-signup {
     color: white;
     background-color: #5F2EEA;
-    border: none;
+    width: 120px;
+    height: 40px;
 }
 .btn-signup:hover {
     color: #5F2EEA;
@@ -52,10 +54,11 @@ p {
 }
 .navlink {
     color: black;
-    font-size: 18px;
+    font-size: 20px;
     font-family: 'Mulish',sans-serif;
-    font-weight: bold;
-    margin-right: 0px;
+    font-weight: 600;
+    padding: 0px;
+    margin: 0px 20px;
 }
 
 @media only screen and (max-width: 992px) {
@@ -93,5 +96,6 @@ p {
     }
     .navlink {
       text-align: center;
+      margin-top: 10px;
     }
 }

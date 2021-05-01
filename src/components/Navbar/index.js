@@ -30,15 +30,15 @@ class Navbar extends Component {
             <Link to="/sign-up" className="btn-signup-mobile">Sign up</Link>
             <p className="nav-mobile">© 2020 Tickitz. All Rights Reserved.</p>
           </Nav>
-          <Nav className="ml-auto nav-web">
-            <NavDropdown title="Location" id="collasible-nav-dropdown" className="navlink mr-1">
+          <Nav className="nav-web">
+            <NavDropdown title="Location" id="collasible-nav-dropdown" className="navlink">
               <NavDropdown.Item href="#action/3.1">Jakarta Barat</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Jakarta Selatan</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Jakarta Pusat</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Jawa Barat</NavDropdown.Item>
             </NavDropdown>
-            <div className="d-flex flex-row search-web">
+            <div className="search-web">
               <FormControl type="text" placeholder="Search" className="input-search-mobile sm-2" />
               <Button type="submit" className="btn-search"><img src={Search} alt=".." /></Button>{' '}
             </div>
