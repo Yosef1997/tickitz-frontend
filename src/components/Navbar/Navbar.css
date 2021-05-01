@@ -2,7 +2,7 @@
 
 
 .containerNavbar{
-    height: fit-content;
+    padding: 35px 130px;
 }
 .btn-signup-mobile {
     display: none;
@@ -57,15 +57,21 @@ p {
     font-weight: bold;
     margin-right: 0px;
 }
-@media only screen and (max-width: 576px) {
+
+@media only screen and (max-width: 992px) {
+    .containerNavbar{
+      padding: 25px 35px;
+    }
+
     .btn-signup-mobile {
         display: block;
         font-size: 18px;
         font-weight: bold;
         font-family: 'Mulish',sans-serif;
         background-color: transparent;
-        border: none;
-        color: black;
+        color: #5F2EEA;
+        text-align: center;
+        margin-bottom: 20px;
     }
     .btn-signup-mobile:hover {
         background-color: whitesmoke;
@@ -84,5 +90,8 @@ p {
     }
     .nav-web {
         display: none;
+    }
+    .navlink {
+      text-align: center;
     }
 }
