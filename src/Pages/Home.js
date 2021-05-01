@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import NowShow from '../components/NowShowing'
 import Upcoming from '../components/UpcomingShow'
+import Subcription from '../components/Subscription'
 import Footer from '../components/Footer'
 
 export default class Home extends Component {
@@ -13,6 +14,7 @@ export default class Home extends Component {
         <Hero />
         <NowShow />
         <Upcoming />
+        <Subcription />
         <Footer />
       </>
     )
