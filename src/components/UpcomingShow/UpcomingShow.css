@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+.Upcoming {
+  padding: 64px 130px;
+  background-color: #FFFFFF;
+}
+
+.Upcoming-row1 {
+  margin-bottom: 56px;
+}
+
+.Upcoming-textLeft {
+  color: #14142B;
+  font-family: 'Mulish', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  width: fit-content;
+}
+
+.Upcoming-col2{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Upcoming-textRight {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  color: #5F2EEA;
+  text-align: right;
+  align-items: center;
+  margin: auto;
+}
+
+.Upcoming-card {
+  width: 223px;
+  height: 452px;
+  padding: 32px;
+  border: 0.5px solid #DEDEDE;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.Upcoming-img{
+  width: 159px;
+  height: 244px;
+}
+
+.upcomingCardTitle {
+  color: #14142B;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 8px;
+}
+
+.upcomingCardGenre {
+  color: #A0A3BD;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  height: 45px;
+}
+
+.upcomingCardBtn {
+  border: 1px solid #5F2EEA;
+  border-radius: 4px;
+  text-align: center;
+  color: #5F2EEA;
+  padding: 10px 0;
+}
