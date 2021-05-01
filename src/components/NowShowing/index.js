@@ -19,7 +19,7 @@ export default class index extends Component {
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col className="nowShow-col3">
             <div className="nowShow-card">
               <Link>
                 <img src={Spiderman2} alt='...' className="nowShow-img" />

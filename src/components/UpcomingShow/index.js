@@ -19,7 +19,7 @@ export default class index extends Component {
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col className="Upcoming-col3">
             <div className="Upcoming-card">
               <img src={Spiderman2} alt='...' className="Upcoming-img" />
               <div className="upcomingCardTitle">Black Widow</div>
