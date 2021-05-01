@@ -3,6 +3,7 @@ import './UpcomingShow.css'
 import { Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Spiderman2 from '../../assets/Rectangle119spiderman.png'
+import BtnMonth from '../BtnMonth'
 
 export default class index extends Component {
   render () {
@@ -17,6 +18,9 @@ export default class index extends Component {
               <p className="Upcoming-textRight">View All</p>
             </Link>
           </Col>
+        </Row>
+        <Row className="Upcoming-month">
+          <BtnMonth />
         </Row>
         <Row>
           <Col className="Upcoming-col3">

@@ -13,6 +13,7 @@ module.exports = {
     },
     ecmaVersion: 12
   },
+  parser: 'babel-eslint',
   plugins: [
     'react'
   ],

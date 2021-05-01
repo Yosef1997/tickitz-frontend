@@ -58,6 +58,10 @@
   border-radius: 10px;
 }
 
+.Upcoming-month {
+  margin: 50px 0px
+}
+
 .Upcoming-card {
   width: 223px;
   height: 452px;
@@ -108,6 +112,9 @@
   .Upcoming {
     padding: 64px 25px;
   }
+  .Upcoming-month {
+    margin: 32px 0px
+  }  
   .Upcoming-textLeft {
     font-size: 18px;
   }
