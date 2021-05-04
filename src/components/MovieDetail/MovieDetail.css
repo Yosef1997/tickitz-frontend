@@ -10,32 +10,58 @@
   border: 0.1px rgb(218, 215, 215) solid;
   border-radius: 10px;    
 }
-.detailCol2 .detail1 p {
-  font-family: 'Mulish', sans-serif;
-  display: flex;
-  flex-direction: column;
-  text-align: start;
-  font-size: 16px;
+
+.detailTitle {
+  color: #14142B;
+  font-family: "Mulish",sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
 }
-.detailCol2 .detail2 p {
-  font-family: 'Mulish', sans-serif;
-  display: flex;
-  flex-direction: column;
-  text-align: start;
-  font-size: 16px;
-}
-.detailCol2 h5 {
-  font-family: 'Mulish', sans-serif;
-  font-weight: bolder;
-  font-size: 14px;
+.detailGenre {
+  color: #4E4B66;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  margin-bottom: 16px;
 }
 
-.detailCol2 .Synopsis p {
-  font-family: 'Mulish', sans-serif;
+.detail2  {
+  display: flex;
   text-align: start;
+}
+
+.detailSubTitle {
+  color: #8692A6;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  margin-top: 16px;
+
+}
+
+.detailText {
+  color: #121212;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
   font-size: 16px;
 }
-.detailCol2 h3 {
-  font-family: 'Mulish', sans-serif;
-  font-weight: bolder;
+
+.detailSynopsis {
+  color: #000000;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.synopsisText {
+  color: #4E4B66;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
 }

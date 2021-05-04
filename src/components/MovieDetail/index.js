@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import './MovieDetail.css'
 import { Container, Row, Col } from 'react-bootstrap'
 import moment from 'moment'
-// import Spiderman from '../../assets/Rectanglespiderman.jpg'
+import Spiderman from '../../assets/Rectanglespiderman.jpg'
 
 export default class index extends Component {
   render () {
@@ -10,39 +11,38 @@ export default class index extends Component {
         <Row className="mt-5">
           <Col md={4} className="detailCol1">
             <div>
-              <img src={this.props.src} className="detailImg" alt="..." />
+              <img src={Spiderman} className="detailImg" alt="..." />
             </div>
           </Col>
           <Col md={8} className="detailCol2">
-            <div className="detail1 d-flex flex-column justify-content-start">
-              <h3>{this.props.name}</h3>
-              <p>{this.props.genre}</p>
+            <div className="detail1">
+              <div className="detailTitle">Spiderman</div>
+              <div className="detailGenre">Action,Sci-fi</div>
             </div>
-            <div className="detail2 d-flex flex">
+            <div className="detail2">
               <div className="w-50">
-                <p className="w-50">Release date</p>
-                <h5 className="w-50">{moment(this.props.releaseDate).format('MMM DD, YYYY')}</h5>
+                <div className="detailSubTitle">Release date</div>
+                <div className="detailText">{moment('2021-05-25').format('MMMM DD, YYYY')}</div>
               </div>
               <div className="w-50">
-                <p className="w-50">Directed by</p>
-                <h5 className="w-50">{this.props.director}</h5>
+                <div className="detailSubTitle">Directed by</div>
+                <div className="detailText">Madun</div>
               </div>
             </div>
-            <div className="detail2  d-flex flex">
+            <div className="detail2">
               <div className="w-50">
-                <p className="w-50">Duration</p>
-                <h5 className="w-50">{this.props.duration}</h5>
+                <div className="detailSubTitle">Duration</div>
+                <div className="detailText">1h 30m</div>
               </div>
               <div className="w-50">
-                <p className="w-50">Casts</p>
-                <h5 className="w-100">{this.props.stars}</h5>
+                <div className="detailSubTitle">Casts</div>
+                <div className="detailText">balbakldlf,adfwef</div>
               </div>
             </div>
             <hr />
             <div className="Synopsis">
-              <h3>Synopsis</h3>
-              <p>{this.props.description}
-              </p>
+              <div className="detailSynopsis">Synopsis</div>
+              <div className="synopsisText">mantap</div>
             </div>
           </Col>
         </Row>

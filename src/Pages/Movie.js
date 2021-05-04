@@ -9,7 +9,7 @@ export default class Movie extends Component {
     return (
       <div>
         <Navbar />
-        <Detail name='spiderman' genre='action' releaseDate='2021-04-19' director='gua' duration='1h 50m' starts='madun' description='check' />
+        <Detail />
         <Footer />
         <Link to="/movie/seat">
         movie detail
