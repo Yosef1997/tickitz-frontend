@@ -1,14 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
 
-.detailCol1 {
-  text-align: center;
+.detail {
+  padding: 0px 70px;
 }
+
 .detailImg {
-  Width: 332px;
-  Height: 400px;
-  padding: 30px;
+  Width:  332px;
+  Height: 458px;
+  padding: 47px;
   border: 0.1px rgb(218, 215, 215) solid;
-  border-radius: 10px;    
+  border-radius: 10px;
+  margin: auto;
+}
+
+.detailCol1 .detailImg img {
+  width: 236.72px;
+  height: 362.83px;
+  border-radius: 10px;
 }
 
 .detailTitle {
@@ -39,7 +47,6 @@
   font-weight: normal;
   font-size: 14px;
   margin-top: 16px;
-
 }
 
 .detailText {
@@ -64,4 +71,50 @@
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
+}
+
+@media only screen and (max-width: 992px) {
+  .detail {
+    padding: 0px;
+  }
+  .detailImg {
+    Width:  223px;
+    Height: 308px;
+    padding: 32px;
+
+  }
+  .detailCol1 .detailImg img {
+    width: 159px;
+    height: 244px;
+  }
+  .detailTitle {
+    color: #000000;
+    font-weight: 600;
+    font-size: 20px;  
+    text-align: center;
+    margin-top: 34px;
+  }
+  .detailGenre {
+    color: #4E4B66;
+    font-size: 16px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .detail2  {
+  padding: 24px;  
+  }
+  .detailSubTitle {
+    font-weight: normal;
+    font-size: 13px;
+  }
+  .Synopsis {
+    padding: 24px;
+  }
+  .detailSynopsis {
+    font-size: 16px;
+  }
+  .synopsisText {
+    font-size: 13px;
+    margin-top: 16px;
+  }
 }

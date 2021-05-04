@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './MovieDetail.css'
 import { Container, Row, Col } from 'react-bootstrap'
 import moment from 'moment'
-import Spiderman from '../../assets/Rectanglespiderman.jpg'
+import Spiderman from '../../assets/spiderman.jpg'
 
 export default class index extends Component {
   render () {
@@ -10,8 +10,8 @@ export default class index extends Component {
       <Container fluid className="detail">
         <Row className="mt-5">
           <Col md={4} className="detailCol1">
-            <div>
-              <img src={Spiderman} className="detailImg" alt="..." />
+            <div className="detailImg">
+              <img src={Spiderman} alt="..." />
             </div>
           </Col>
           <Col md={8} className="detailCol2">

@@ -7,14 +7,14 @@ import Footer from '../components/Footer'
 export default class Movie extends Component {
   render () {
     return (
-      <div>
+      <>
         <Navbar />
         <Detail />
         <Footer />
         <Link to="/movie/seat">
         movie detail
         </Link>
-      </div>
+      </>
     )
   }
 }
