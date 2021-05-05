@@ -1,5 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
 
+.showTime {
+  background-color: #F5F6F8;
+  padding: 70px 0px 35px;
+}
+
+.showTimeTitle {
+  color: #14142B;
+  font-family: 'Mulish', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+}
+
+.showTimeBtn {
+  display: flex;
+  justify-content: center;
+}
+
 .dropDown {
   display: flex;
   border-radius: 6px;
@@ -8,6 +27,7 @@
   height: 56px;
   align-items: center;
   padding: 0px 10px;
+  margin: 40px 12px 35px 12px;
 }
 
 .dropDownInput {
@@ -16,6 +36,13 @@
 }
 
 @media only screen and (max-width: 992px) {
+  .showTime {
+    padding: 40px 0px 20px;
+  }
+  .showTimeTitle {
+    color: #000000;
+    font-size: 18px;  
+  }
   .dropDown {
     width: 260px;
     height: 48px;
