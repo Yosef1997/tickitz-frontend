@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import './Cinema.css'
-import { Container, Row, Col, ButtonGroup, ToggleButton } from 'react-bootstrap'
+import { Container, Row, Col, Button, ButtonGroup, ToggleButton } from 'react-bootstrap'
 import Logo from '../../assets/ebv.jpg'
+import { withRouter } from 'react-router-dom'
 
-export default class index extends Component {
+class index extends Component {
   state = {
     radios: [
       { name: '9.30am', value: '1' },
@@ -18,6 +19,9 @@ export default class index extends Component {
   handleTime = e => {
     this.setState({ radioValue: e.currentTarget.value })
     console.log('time', e.currentTarget.value)
+  }
+  handleCinema = () => {
+    this.props.history.push('/movie/seat/')
   }
   render () {
     const { radios, radioValue } = this.state
@@ -54,13 +58,20 @@ export default class index extends Component {
                 <div className="cinemaPriceText">Price</div>
                 <div className="cinemaPriceTotal">$10.00/seat</div>
               </div>
-              <div>
-
+              <div className="cinemaBtnForm">
+                <Button onClick={() => this.handleCinema()} className="cinemaBookBtn">Book now</Button>
+                <Button className="cinemaCartBtn">Add to cart</Button>
               </div>
             </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col className='text-center'>
+          <Button onClick className="cinemaViewMore">view more</Button>
           </Col>
         </Row>
       </Container>
     )
   }
 }
+export default withRouter(index)

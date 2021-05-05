@@ -78,14 +78,73 @@
   font-size: 14px;
 }
 
+.cinemaBtnForm {
+  padding: 0px 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cinemaBookBtn {
+  width: 134px;
+  height: 40px;
+  background-color: #5F2EEA;
+  border: 4px;
+  box-shadow: 0px 8px 24px rgba(95, 46, 234, 0.24);
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  color: #F7F7FC;
+}
+
+.cinemaCartBtn {
+  width: 134px;
+  height: 40px;
+  background-color: #FFFF;
+  border: 4px;
+  box-shadow: 0px 8px 24px rgba(95, 46, 234, 0.24);
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  color: #5F2EEA;
+}
+
+.cinemaCartBtn:hover {
+  background-color: transparent;
+  color: #5F2EEA;
+}
+
+.cinemaViewMore {
+  width: 134px;
+  height: 40px;
+  background-color: transparent;
+  border: 4px;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  color: #5F2EEA;
+  margin: 14px 0px 64px;
+}
+
+.cinemaViewMore:hover {
+  background-color: transparent;
+  color: #5F2EEA;
+}
+
 @media only screen and (max-width: 992px) {
   .cinema {
     padding: 0px 24px;
   }
+  .cinemaCard {
+    width: 327px;
+    height: 350px;
+  }
   .cinemaHeader {
     display: block;
     text-align: center;
-    margin: 34px;
+    margin: 24px 24px 0px;
   }
   .cinemaImg {
     margin-right: 0px;
@@ -96,5 +155,7 @@
   .cinemaName {
     display: none;  
   }
-  
+  .cinemaTimeBtn {
+    margin: 16px 16px;
+  } 
 }

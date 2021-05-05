@@ -47,4 +47,7 @@
     width: 260px;
     height: 48px;
   }
+  .dropDown {
+    margin: 20px 12px 0px 12px;
+  }
 }
