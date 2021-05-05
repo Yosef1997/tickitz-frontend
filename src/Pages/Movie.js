@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Detail from '../components/MovieDetail'
-import Dropdown from '../components/BtnDropdown'
+import DropdownDate from '../components/BtnDateDropDown'
+import DropdownLocation from '../components/BtnLocationDropDown'
 import Footer from '../components/Footer'
 
 export default class Movie extends Component {
@@ -11,7 +12,8 @@ export default class Movie extends Component {
       <>
         <Navbar />
         <Detail />
-        <Dropdown placeholder='Set a date' />
+        <DropdownDate />
+        <DropdownLocation />
         <Footer />
         <Link to="/movie/seat">
         movie detail

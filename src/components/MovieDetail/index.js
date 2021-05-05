@@ -9,12 +9,12 @@ export default class index extends Component {
     return (
       <Container fluid className="detail">
         <Row className="mt-5">
-          <Col md={4} className="detailCol1">
+          <Col lg={4} className="detailCol1">
             <div className="detailImg">
               <img src={Spiderman} alt="..." />
             </div>
           </Col>
-          <Col md={8} className="detailCol2">
+          <Col lg={8} className="detailCol2">
             <div className="detail1">
               <div className="detailTitle">Spiderman</div>
               <div className="detailGenre">Action,Sci-fi</div>
