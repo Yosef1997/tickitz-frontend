@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+.ticket {
+  background-color: #F5F6F8;
+  padding: 75px 195px 95px;
+
+}
+
+.ticketPaper {
+  background-color: #FFFF;
+  border-radius: 8px;
+  padding: 56px 70px 48px;
+}
+
+.ticketTitle {
+  color: #14142B;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+}
+
+.ticketBtnForm {
+  display: flex;
+  justify-content: center;
+}
+
+.ticketBtn {
+  border: 1px solid #4E4B66;
+  border-radius: 4px;
+  padding: 5px 20px;
+  color: #4E4B66;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 992px) {
+}

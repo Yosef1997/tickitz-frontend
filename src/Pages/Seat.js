@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import { Row, Col } from 'react-bootstrap'
 import Navbar from '../components/Navbar'
 import OrderSeat from '../components/OrderSeat'
 import Footer from '../components/Footer'
