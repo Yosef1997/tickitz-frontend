@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Card } from 'react-bootstrap'
+import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import './OrderSeat.css'
+import OrderInfo from '../OrderInfo'
 import { Link } from 'react-router-dom'
 
 export default class index extends Component {
@@ -39,9 +40,9 @@ export default class index extends Component {
     return (
       <Container fluid className='orderSeat'>
         <Row>
-          <Col>
-            <div className='orderTitle'>Movie Selected</div>
-            <div className='orderDetailForm'>
+          <Col lg={8}>
+            <div className='orderTitle orderWeb'>Movie Selected</div>
+            <div className='orderDetailForm orderWeb'>
               <div className='orderMovie'>Spider-Man: Homecoming</div>
               <Link to='/' className='orderChangeBtn'>Change movie</Link>
             </div>
@@ -104,7 +105,7 @@ export default class index extends Component {
                                       } */}
                                     </>
                                     : <>
-                                    <input type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className="seat-layout btn-seat-layout btn-seat bg-gray-light" />
+                                    <input type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className="seat-layout btn-seat-layout btn-seat" />
                                       {/* {
                                         seatSold.split(',').indexOf(`${row}${column}`) > -1
                                           ? <input type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className="seat-layout btn-seat-layout btn-seat bg-gray-light" disabled />
@@ -132,7 +133,33 @@ export default class index extends Component {
                 </Card>
               </Col>
               </Row>
+              <div className='orderSeatingKey'>Seating key</div>
+              <div className='orderLegend orderWeb'>
+                <div className='orderLegendDetail'>
+                  <div className='bg-gray-light' />
+                  <div>Available</div>
+                </div>
+                <div className='orderLegendDetail'>
+                  <div className='bg-theme' />
+                  <div>Selected</div>
+                </div>
+                <div className='orderLegendDetail'>
+                  <div className='bg-pink' />
+                  <div>Love nest</div>
+                </div>
+                <div className='orderLegendDetail'>
+                  <div className='bg-dark-ash' />
+                  <div>Sold</div>
+                </div>
+              </div>
             </div>
+            <div className='orderFormBtn'>
+              <Link className='orderChangeMovie'>Change your movie</Link>
+              <Button className='orderCheckOut'>Checkout now</Button>
+            </div>
+          </Col>
+          <Col lg={4}>
+            <OrderInfo />
           </Col>
         </Row>
       </Container>

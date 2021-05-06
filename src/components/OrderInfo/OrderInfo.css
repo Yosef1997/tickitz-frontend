@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+.orderInfo {
+  background-color: #F5F6F8;
+  padding: 0px 70px 75px 12px;
+}
+
+.orderTitle {
+  color: #14142B;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.orderInfoForm {
+  background-color: #FFFF;
+  border-radius: 6px;
+  padding: 37px 24px 24px;
+  margin: 24px 0px;
+}
+
+.orderInfoImg {
+  width: 132px;
+  height: 23px;
+}
+
+.orderInfoCinema {
+  color: #14142B;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  margin-top: 14px;
+}
+
+.orderInfoDetail {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.orderInfo1 {
+  color: #6B6B6B;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.orderInfo2 {
+  color: #14142B;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.orderInfoTotal {
+  color: #000000;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.orderInfoPrice {
+  color: #5F2EEA;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+@media only screen and (max-width: 992px) {
+  .orderWeb {
+    display: none;
+  }
+}

@@ -50,6 +50,7 @@
   border-radius: 6px;
   padding: 106px 0px;
   text-align: center;
+  margin-top: 24px;
 }
 
 .orderScreenText {
@@ -87,7 +88,7 @@
   appearance: none;
   width: 26px !important;
   height: 26px !important;
-  border-radius: 4px !important;
+  border-radius: 8px !important;
   background-color:#D6D8E7 !important;
 }
 
@@ -115,25 +116,105 @@ input[type="checkbox"]:disabled{
   appearance: none;
   width: 60px !important;
   height: 26px !important;
-  border-radius: 4px !important;
+  border-radius: 8px !important;
   background-color: #F589D7 !important;
 }
 
 .bg-gray-light{
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  margin-right: 16px;
   background-color:#D6D8E7 !important;
 }
 
 .bg-dark-ash{
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  margin-right: 16px;
   background-color: #6E7191 !important;
 }
 
 .bg-theme{
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  margin-right: 16px;
   background-color: #5F2EEA !important;
 }
 
 .bg-pink{
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  margin-right: 16px;
   background-color: #F589D7 !important;
 }
 
+.orderSeatingKey {
+  color: #000000;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: left;
+  margin-left: 117px;
+}
+
+.orderLegend {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 21px 117px;
+}
+
+.orderLegendDetail {
+  display: flex;
+  align-items: center;
+}
+
+.orderFormBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px 0px 0px;
+}
+
+.orderChangeMovie {
+  width: 300px;
+  height: 56px;
+  border-radius: 16px;
+  border: 2px solid #5F2EEA;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  color: #5F2EEA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orderCheckOut {
+  width: 300px;
+  height: 56px;
+  background: #5F2EEA;
+  border-radius: 16px;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+}
+
 @media only screen and (max-width: 992px) {
+  .orderSeat {
+    padding: 32px 24px 75px 24px;
+  }
+  .orderWeb {
+    display: none;
+  }
+  .orderScreenBar {
+    width: 295px;
+    height: 8px;
+  }
 }
