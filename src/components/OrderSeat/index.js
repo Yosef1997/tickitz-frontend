@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import './OrderSeat.css'
 import OrderInfo from '../OrderInfo'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
-export default class index extends Component {
+class index extends Component {
   state={
     seatSold: ['A5']
   }
 
+  handleCheckOut =() => {
+    this.props.history.push('/movie/seat/payment')
+  }
   handleClickChooseSeat = (event) => {
     console.log(event.target.id)
     // if (event.target.id && event.target.checked === false) {
@@ -155,7 +158,7 @@ export default class index extends Component {
             </div>
             <div className='orderFormBtn'>
               <Link className='orderChangeMovie'>Change your movie</Link>
-              <Button className='orderCheckOut'>Checkout now</Button>
+              <Button onClick={this.handleCheckOut} className='orderCheckOut'>Checkout now</Button>
             </div>
           </Col>
           <Col lg={4}>
@@ -166,3 +169,5 @@ export default class index extends Component {
     )
   }
 }
+
+export default withRouter(index)

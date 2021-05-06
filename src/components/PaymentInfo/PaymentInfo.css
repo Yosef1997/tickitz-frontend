@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+.payment {
+  background-color: #F5F6F8;
+  padding: 32px 12px 75px 70px;
+}
+
+.paymentTitle {
+  color: #14142B;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  margin-top: 24px;
+}
+
+.paymentForm {
+  background-color: #FFFF;
+  border-radius: 6px;
+  padding: 16px 40px;
+  margin-top: 24px;
+}
+
+.paymentDetail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #E6E6E6;
+  padding: 24px 0px;
+}
+
+.paymentDetail1 {
+  color: #6B6B6B;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+}
+
+.paymentDetail2 {
+  color: #000000;  
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+}
+
+.paymentBtnForm {
+  display: flex;
+  justify-content: space-around;
+  margin: 32px 0px;
+}
+
+.paymentBtn {
+  border: 2px solid #DEDEDE;
+  border-radius: 8px;
+  width: 146px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0px;
+  background-color: transparent;
+}
+
+.paymentBtn:hover {
+  background-color: transparent;
+}
+
+.paymentOr {
+  color: #A0A3BD;
+  font-family: 'Mulish', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.paymentCash {
+  color: #5F2EEA;
+  font-family: 'Mulish', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.payBtnFrom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px 0px 0px;
+}
+
+.paymentBackStep {
+  width: 300px;
+  height: 56px;
+  border-radius: 16px;
+  border: 2px solid #5F2EEA;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  color: #5F2EEA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paymentPay {
+  width: 300px;
+  height: 56px;
+  background: #5F2EEA;
+  border-radius: 16px;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 992px) {
+}
