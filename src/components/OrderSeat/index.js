@@ -157,7 +157,7 @@ class index extends Component {
               </div>
             </div>
             <div className='orderFormBtn'>
-              <Link className='orderChangeMovie'>Change your movie</Link>
+              <Link to='/' className='orderChangeMovie'>Change your movie</Link>
               <Button onClick={this.handleCheckOut} className='orderCheckOut'>Checkout now</Button>
             </div>
           </Col>

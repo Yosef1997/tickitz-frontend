@@ -10,6 +10,8 @@ import GoPay from '../../assets/gopay.png'
 import OVO from '../../assets/ovo.png'
 import PayPal from '../../assets/paypal.png'
 import Visa from '../../assets/visa.png'
+import Warning from '../../assets/warning-logo.png'
+import Input from '../Input'
 
 class index extends Component {
   handlePay =() => {
@@ -73,10 +75,29 @@ class index extends Component {
             </div>
 
             <div className='payBtnFrom'>
-              <Link className='paymentBackStep'>Prvious step</Link>
+              <Link to='/movie/seat' className='paymentBackStep'>Prvious step</Link>
               <Button onClick={this.handlePay} className='paymentPay'>Pay your order</Button>
             </div>
 
+          </Col>
+          <Col lg={4}>
+            <div className='paymentTitle orderWeb'>Personal Info</div>
+            <div className='PersonalInfoForm'>
+                <div className='mb-4'>
+                <Input label='Full Name' type='text' placeholder='Write your full name' />
+                </div>
+                <div className='mb-4'>
+                <Input label='Email' type='email' placeholder='Write your email' />
+                </div>
+                <div className='mb-4'>
+                <Input label='Phone Number' type='number' placeholder='Write your phone number' />
+                </div>
+                <div className='PersonalInfoCaution'>
+                  <img src={Warning} className='mr-3' />
+                  <div>Fill your data correctly.</div>
+                </div>
+
+            </div>
           </Col>
         </Row>
       </Container>

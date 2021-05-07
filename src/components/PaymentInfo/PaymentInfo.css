@@ -2,7 +2,7 @@
 
 .payment {
   background-color: #F5F6F8;
-  padding: 32px 12px 75px 70px;
+  padding: 32px 49px 75px 70px;
 }
 
 .paymentTitle {
@@ -118,6 +118,21 @@
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
+}
+
+.PersonalInfoForm {
+  background-color: #FFFF;
+  margin-top: 24px;
+  border-radius: 8px;
+  padding: 40px 47px;
+}
+
+.PersonalInfoCaution {
+  border-radius: 4px;
+  background-color: rgba(244, 183, 64, 0.3);
+  display: flex;
+  align-items: center;
+  padding: 20px 32px;
 }
 
 @media only screen and (max-width: 992px) {
