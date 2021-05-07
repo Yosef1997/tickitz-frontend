@@ -3,10 +3,15 @@ import './Navbar.css'
 import { Navbar as NavbarBrowser, Nav, NavDropdown, FormControl, Button } from 'react-bootstrap'
 import Brand from '../../assets/tickitzpurple.png'
 import Search from '../../assets/searchicon.png'
+import ProfileIcon from '../../assets/profil-icon.png'
 import { Link } from 'react-router-dom'
 
 class Navbar extends Component {
+  state ={
+    token: false
+  }
   render () {
+    const { token } = this.state
     return (
       <NavbarBrowser collapseOnSelect expand="lg" bg="white" variant="light" className="containerNavbar">
         <NavbarBrowser.Brand><Link to="/"><img src={Brand} alt="..." /></Link></NavbarBrowser.Brand>
@@ -27,7 +32,11 @@ class Navbar extends Component {
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Jawa Barat</NavDropdown.Item>
             </NavDropdown>
-            <Link to="/sign-up" className="btn-signup-mobile">Sign up</Link>
+            {!token
+              ? (<Link to="/profile" className="btn-signup-mobile">Profile</Link>
+                )
+              : (<Link to="/sign-up" className="btn-signup-mobile">Sign up</Link>
+                )}
             <p className="nav-mobile">© 2020 Tickitz. All Rights Reserved.</p>
           </Nav>
           <Nav className="nav-web">
@@ -42,7 +51,12 @@ class Navbar extends Component {
               <FormControl type="text" placeholder="Search" className="input-search-mobile sm-2" />
               <Button type="submit" className="btn-search"><img src={Search} alt=".." /></Button>{' '}
             </div>
-            <Link to="/register"><Button type="submit" className="btn-signup ml-2 p-2">Sign up</Button>{' '}</Link>
+            {!token
+              ? (<Link to="/profile"><img src={ProfileIcon} className='navbarImg' /></Link>
+                )
+              : (<Link to="/register"><Button type="submit" className="btn-signup ml-2 p-2">Sign up</Button>{' '}</Link>
+                )
+            }
           </Nav>
         </NavbarBrowser.Collapse>
       </NavbarBrowser>
