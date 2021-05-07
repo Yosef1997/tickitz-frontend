@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
+import RegisterBody from '../components/Register'
 
 export default class Register extends Component {
   render () {
     return (
-      <div>
-        <Link to="/login">
+      <>
+        <RegisterBody />
+        {/* <Link to="/login">
           Register
-        </Link>
-      </div>
+        </Link> */}
+      </>
     )
   }
 }
