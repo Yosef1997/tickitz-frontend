@@ -15,8 +15,9 @@ export default class index extends Component {
           <Col className='ticket'>
             <div className='ticketPaper'>
               <div className='ticketTitle'>Proof of Payment</div>
-              <div className='ticketCircle' />
-              <div className='d-flex mt-5'>
+              <div className='ticketCircle1' />
+              <div className='ticketCircle2' />
+              <div className='d-flex'>
                 <div className='ticketHeaderLeft'>
                   <img src={Logo} className='ticketLogo' />
                   <div className='ticketHeaderText'>Admit One</div>

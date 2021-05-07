@@ -104,13 +104,24 @@
   object-fit: contain;
 }
 
-.ticketCircle {
+.ticketCircle1 {
   position: relative;
   width: 43px;
   height: 43px;
   border-radius: 43px;
   left: 543px;
-  top: 70px;
+  top: 65px;
+  background-color: #FFFFFF;
+}
+
+.ticketCircle2 {
+  position: relative;
+  width: 43px;
+  height: 43px;
+  border-radius: 43px;
+  left: 543px;
+  top: 350px;
+  border-top: 1px solid #DEDEDE;
   background-color: #FFFFFF;
 }
 
