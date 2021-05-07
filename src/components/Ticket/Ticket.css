@@ -21,6 +21,99 @@
   text-align: center;
 }
 
+.ticketHeaderLeft {
+  background-color: #5F2EEA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top-left-radius: 16px;
+  padding: 24px 56px;
+  width: 70%;
+}
+
+.ticketHeaderText {
+  color: #FFFFFF;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.ticketBodyLeft {
+  border-bottom-left-radius: 16px;
+  border-left: 1px solid #DEDEDE;
+  border-bottom: 1px solid #DEDEDE;
+  width: 69%;
+  padding: 32px 40px 48px 56px;
+}
+
+.ticketBodyDetail {
+  color: #AAAAAA;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.ticketBodyText {
+  color: #14142B;  
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.ticketBodyTotal {
+  color: #14142B;  
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.ticketHeaderRight {
+  background-color: #5F2EEA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px dashed #DEDEDE;
+  border-top-Right-radius: 16px;
+  padding: 24px 0px;
+  width: 261px;
+}
+
+.ticketBodyRight {
+  border-bottom-right-radius: 16px;
+  border-left: 1px dashed #DEDEDE;
+  border-right: 1px solid #DEDEDE;
+  border-bottom: 1px solid #DEDEDE;
+  width: 31%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ticketBarcode {
+  width: 186px;
+  height: 186px;
+}
+
+.ticketLogo {
+  width: 116px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.ticketCircle {
+  position: relative;
+  width: 43px;
+  height: 43px;
+  border-radius: 43px;
+  left: 543px;
+  top: 70px;
+  background-color: #FFFFFF;
+}
+
 .ticketBtnForm {
   display: flex;
   justify-content: center;
