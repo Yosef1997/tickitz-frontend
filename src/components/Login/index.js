@@ -33,7 +33,7 @@ export default class index extends Component {
             <div>
               <Button className="loginFormBtn">Sign In</Button>
             </div>
-            <div className="loginFormLogin mt-3">Forgot your password? <span><Link to='/login' style={{ color: '#5F2EEA' }}>Reset now</Link></span></div>
+            <div className="loginFormLogin mt-3">Forgot your password? <span><Link to='/forgetpassword' style={{ color: '#5F2EEA' }}>Reset now</Link></span></div>
             <div className="loginFormLogin my-2">or</div>
             <div className='d-flex justify-content-between'>
               <Link className="loginFormAccount">

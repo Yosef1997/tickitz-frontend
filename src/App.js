@@ -8,6 +8,7 @@ import store from './Redux/store'
 import Home from './Pages/Home'
 import Register from './Pages/Register'
 import Login from './Pages/Login'
+import ForgetPassword from './Pages/ForgetPassword'
 import Movie from './Pages/Movie'
 import ViewAll from './Pages/ViewAll'
 import Seat from './Pages/Seat'
@@ -24,6 +25,7 @@ class App extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
+            <Route path="/forgetPassword" component={ForgetPassword} />
             <Route path="/movie" exact component={Movie} />
             <Route path="/viewall" component={ViewAll} />
             <Route path="/movie/seat/" exact component={Seat} />
