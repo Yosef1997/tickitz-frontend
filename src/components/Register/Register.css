@@ -166,4 +166,8 @@
   font-size: 18px;
 }
 
-@media only screen and (max-width: 992px) {}
+@media only screen and (max-width: 992px) {
+  .registerLegend {
+    display: none;
+  }
+}
