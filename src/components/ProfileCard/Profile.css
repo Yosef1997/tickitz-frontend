@@ -1,4 +1,154 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
 
+.profileCard {
+  background-color: #FFFF;
+  padding: 0px;
+  border-radius: 16px;
+}
+
+.profileCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px;
+}
+
+.profileCardText1 {
+  color: #4E4B66;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+.profileCardMenu {
+  color: #5F2EEA;
+  font-weight: bolder;
+}
+
+.profileCardBtn {
+  cursor: pointer;
+  margin: 0px auto 32px;
+  width: 136px;
+  height: 136px;
+  border-radius: 136px;
+}
+
+.profileCardBtn:active {
+  filter: drop-shadow(0px 8px 16px rgba(73, 83, 99, 0.24));
+  box-shadow: 10px rgba(7, 6, 6, 0.08);
+}
+
+.profileCardImg {
+  width: 136px;
+  height: 136px;
+  border-radius: 136px;
+  object-fit: cover;
+}
+
+.profileCardName {
+  font-family: 'Mulish',sans-serif;
+  color: #14142B;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.profileCardText2 {
+  color: #4E4B66;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  text-align: center;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #DEDEDE;
+}
+
+.profileCardLoyalty {
+  padding: 40px 40px 100px;
+}
+
+.profileCardProgress {
+  background-color: #5F2EEA;
+  border-radius: 8px;
+}
+
+.rectangle1 {
+  margin: 26px 0px;
+  border-radius: 10px;
+  background-color: #ae95f1;
+  height: 118px;
+  width: 100%;
+}
+
+.rectangle2 {
+  background-color: #5F2EEA;
+  position: relative;
+  top: -13px;
+  left: -7px;
+  height: 125px;
+  width: 105%;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rectangle2 .Moviegoers{
+  color: white;
+  font-family: 'Mulish',sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.rectangle2 p {
+  color: white;
+  font-family: 'Mulish',sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: left;
+  margin: 0px;
+}
+
+.rectangle2 p span{
+  color: white;
+  font-family: 'Mulish',sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  margin-left: 5px;
+}
+
+.circle1 {
+  position: relative;
+  border:white solid;
+  opacity: 30%;
+  height: 100px ;
+  width: 100px;
+  top: -225px;
+  left: 220px;
+  background-color:white;
+}
+
+.circle2 {
+  position: relative;
+  border:white solid;
+  opacity: 50%;
+  height: 100px ;
+  width: 100px;
+  top: 20px;
+  left: 10px;
+  background-color:white;
+}
+
+.star {
+  position: relative;
+  opacity: 100%;
+  top: -135px;
+  left: 240px;
+}
 
 @media only screen and (max-width: 992px) {}
