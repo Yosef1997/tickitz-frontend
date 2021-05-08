@@ -31,7 +31,7 @@ class App extends Component {
             <Route path="/movie/seat/" exact component={Seat} />
             <Route path="/movie/seat/payment" exact component={Payment} />
             <Route path="/movie/seat/payment/ticket" exact component={Ticket} />
-            <Route path="/Profile" component={Profile} />
+            <Route path="/profile" component={Profile} />
           </Switch>
         </BrowserRouter>
       </Provider>

@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+.orderHistory {
+  background-color: #FFFF;
+  border-radius: 16px;
+  margin-top: 24px;
+  padding: 0px;
+}
+
+.orderHistoryForm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 40px;
+  border-bottom: 1px solid #DEDEDE;
+}
+
+.orderHistorySchedule {
+  color: #AAAAAA;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.orderHistoryMovie {
+  color: #000000;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 38px;
+}
+
+.orderHistoryImg {
+  width: 121px;
+}
+
+.orderHistoryBtn {
+  background: #00BA88;
+  border: none;
+  width: 196px;
+  height: 40px;
+  color: #F7F7FC;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.orderHistoryDetail {
+  color: #AAAAAA;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.orderHistoryBtn:hover {
+  background: #00BA88;
+  border: none;
+  color: #F7F7FC;
+}
+.orderHistoryBtn:focus {
+  background: #00BA88;
+  color: #F7F7FC;
+  box-shadow: none;
+}
+
+@media only screen and (max-width: 992px) {}

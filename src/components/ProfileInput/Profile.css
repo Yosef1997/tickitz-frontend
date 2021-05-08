@@ -1,4 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
 
+.ProfileInputForm {
+  background-color: #FFFF;
+  border-radius: 16px;
+  padding: 40px 32px 60px;
+  margin-top: 24px;
+}
+
+.ProfileInputTitle {
+  color: #14142B;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #DEDEDE;
+  margin-bottom: 48px;
+}
+
+.ProfileInputBtn {
+  background-color: #5F2EEA;
+  border-radius: 16px;
+  color: #F7F7FC;
+  font-family: 'Mulish',sans-serif  ;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  margin-top: 48px;
+  width: 360px;
+  height: 56px;
+}
+
+.ProfileInputBtn:hover {
+  color: #5F2EEA;
+  font-style: normal;
+  background-color: transparent;
+  border: 1px solid #5F2EEA;
+}
 
 @media only screen and (max-width: 992px) {}
