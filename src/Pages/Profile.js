@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Navbar from '../components/Navbar'
-
+import ProfilBody from '../components/ProfileMenu'
 import Footer from '../components/Footer'
 
 export default class Profile extends Component {
@@ -8,7 +8,7 @@ export default class Profile extends Component {
     return (
       <>
         <Navbar />
-
+          <ProfilBody />
         <Footer />
         Profile
       </>
