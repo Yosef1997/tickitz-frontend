@@ -7,7 +7,10 @@ export default class index extends Component {
     return (
       <div>
         <Form.Label className='labelInput'>{this.props.label}</Form.Label>
-        <Form.Control type={this.props.type} onChange={this.props.onChange} value={this.props.value} placeholder={this.props.placeholder} className='input' />
+        <div className='inputNumber'>
+          <div className='countryCode'>+62</div>
+          <input type={this.props.type} onChange={this.props.onChange} value={this.props.value} placeholder={this.props.placeholder} />
+        </div>
       </div>
     )
   }

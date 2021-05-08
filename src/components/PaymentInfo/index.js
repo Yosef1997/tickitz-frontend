@@ -12,6 +12,7 @@ import PayPal from '../../assets/paypal.png'
 import Visa from '../../assets/visa.png'
 import Warning from '../../assets/warning-logo.png'
 import Input from '../Input'
+import InputNumber from '../InputNumber'
 
 class index extends Component {
   handlePay =() => {
@@ -90,7 +91,7 @@ class index extends Component {
                 <Input label='Email' type='email' placeholder='Write your email' />
                 </div>
                 <div className='mb-4'>
-                <Input label='Phone Number' type='number' placeholder='Write your phone number' />
+                <InputNumber label='Phone Number' type='text' placeholder='Write your phone number' />
                 </div>
                 <div className='PersonalInfoCaution'>
                   <img src={Warning} className='mr-3' />

@@ -6,6 +6,7 @@ import Logo from '../../assets/tickitzwhite.png'
 import Facebook from '../../assets/fb-logo.jpg'
 import Google from '../../assets/Google-logo.jpg'
 import Input from '../Input'
+import InputPassword from '../InputPassword'
 
 export default class index extends Component {
   render () {
@@ -40,11 +41,11 @@ export default class index extends Component {
               <Input label='Email' type='email' placeholder='Write your email' />
             </div>
             <div className='mb-3'>
-              <Input label='Password' type='password' placeholder='Write your password' />
+              <InputPassword label='Password' type='password' placeholder='Write your password' />
             </div>
             <div className='mb-3'>
               <label className="registerFormCheckBox">I agree to terms & conditions
-                <input type="checkbox"/>
+                <input type="checkbox" />
                 <span className="checkmark"></span>
               </label>
             </div>
