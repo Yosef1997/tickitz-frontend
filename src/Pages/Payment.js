@@ -3,19 +3,16 @@ import Navbar from '../components/Navbar'
 import PaymentInfo from '../components/PaymentInfo'
 import Footer from '../components/Footer'
 
-import { Link } from 'react-router-dom'
-
 export default class Payment extends Component {
+  componentDidMount () {
+    window.scrollTo(0, 0)
+  }
   render () {
     return (
       <>
         <Navbar />
         <PaymentInfo />
         <Footer />
-
-        <Link to="/movie/seat/payment/ticket">
-          payment
-        </Link>
       </>
     )
   }

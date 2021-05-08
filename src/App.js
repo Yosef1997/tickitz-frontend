@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import store from './Redux/store'
 
 // import PrivateRoute from './components/PrivateRoute/PrivateRoute'
+// import ScrollToTop from './Helper/scrollToTop'
 import Home from './Pages/Home'
 import Register from './Pages/Register'
 import Login from './Pages/Login'
@@ -21,6 +22,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
+        {/* <ScrollToTop /> */}
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/register" component={Register} />
