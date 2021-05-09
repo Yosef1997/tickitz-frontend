@@ -2,11 +2,21 @@ import React, { Component } from 'react'
 import './UpcomingShow.css'
 import { Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import Spiderman2 from '../../assets/Rectangle119spiderman.png'
+// import Spiderman2 from '../../assets/Rectangle119spiderman.png'
 import BtnMonth from '../BtnMonth'
+import { connect } from 'react-redux'
+import { allMovie, detailMovie } from '../../Redux/Action/movie'
 
-export default class index extends Component {
+const { REACT_APP_API_URL: URL } = process.env
+
+class index extends Component {
+  async componentDidMount () {
+    await this.props.allMovie()
+  }
+
   render () {
+    const { allMovie } = this.props.movie
+
     return (
       <Container fluid className="Upcoming">
         <Row className="Upcoming-row1">
@@ -24,12 +34,18 @@ export default class index extends Component {
         </Row>
         <Row>
           <Col className="Upcoming-col3">
-            <div className="Upcoming-card">
-              <img src={Spiderman2} alt='...' className="Upcoming-img" />
+            {allMovie.map((item, idx) => {
+              return (
+                <>
+            <div key={idx} className="Upcoming-card">
+              <img src={`${URL}/upload/movie/${item.picture}`} alt='...' className="Upcoming-img" />
               <div className="upcomingCardTitle">Black Widow</div>
               <div className="upcomingCardGenre">Action, Adventure, Sci-Fi</div>
               <Link to='/movie'><div className="upcomingCardBtn">Details</div></Link>
             </div>
+                </>
+              )
+            })}
           </Col>
         </Row>
 
@@ -37,3 +53,12 @@ export default class index extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  movie: state.movie
+})
+
+const mapDispatchToProps = { allMovie, detailMovie }
+
+export default connect(mapStateToProps, mapDispatchToProps)(index)
