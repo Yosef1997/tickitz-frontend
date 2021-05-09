@@ -1,4 +1,4 @@
-import http from '../../../helper/http'
+import http from '../../Helper/http'
 
 export const allMovie = (token, search, order, limit, page, sort) => {
   return async (dispatch) => {

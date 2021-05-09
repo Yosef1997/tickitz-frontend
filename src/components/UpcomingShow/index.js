@@ -28,7 +28,7 @@ export default class index extends Component {
               <img src={Spiderman2} alt='...' className="Upcoming-img" />
               <div className="upcomingCardTitle">Black Widow</div>
               <div className="upcomingCardGenre">Action, Adventure, Sci-Fi</div>
-              <Link><div className="upcomingCardBtn">Details</div></Link>
+              <Link to='/movie'><div className="upcomingCardBtn">Details</div></Link>
             </div>
           </Col>
         </Row>

@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import { Provider } from 'react-redux'
-import store from './Redux/store'
+import persistedStore from './Redux/store'
+import { PersistGate } from 'redux-persist/integration/react'
 
 // import PrivateRoute from './components/PrivateRoute/PrivateRoute'
-// import ScrollToTop from './Helper/scrollToTop'
+import ScrollToTop from './Helper/scrollToTop'
 import Home from './Pages/Home'
 import Register from './Pages/Register'
 import Login from './Pages/Login'
@@ -19,10 +20,12 @@ import Profile from './Pages/Profile'
 
 class App extends Component {
   render () {
+    const { store, persistor } = persistedStore()
     return (
       <Provider store={store}>
+        <PersistGate persistor={persistor}>
         <BrowserRouter>
-        {/* <ScrollToTop /> */}
+        <ScrollToTop />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/register" component={Register} />
@@ -36,6 +39,7 @@ class App extends Component {
             <Route path="/profile" component={Profile} />
           </Switch>
         </BrowserRouter>
+        </PersistGate>
       </Provider>
 
     )

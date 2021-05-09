@@ -23,9 +23,9 @@ export default class BtnMonth extends Component {
   render () {
     const { month } = this.state
     return <Col className="colMonth">
-      {month.map((month) => {
+      {month.map((month, idx) => {
         return (
-          <div key={String(month.id)}>
+          <div key={idx}>
             <Button className="btnMonth">{month.name}</Button>
           </div>
         )
