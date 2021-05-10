@@ -3,15 +3,19 @@ import './Navbar.css'
 import { Navbar as NavbarBrowser, Nav, NavDropdown, FormControl, Button } from 'react-bootstrap'
 import Brand from '../../assets/tickitzpurple.png'
 import Search from '../../assets/searchicon.png'
-import ProfileIcon from '../../assets/profil-icon.png'
-import { Link } from 'react-router-dom'
+// import ProfileIcon from '../../assets/profil-icon.png'
+import Overlays from '../Overlays'
+import { Link, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { signout } from '../../Redux/Action/auth'
 
 class Navbar extends Component {
-  state ={
-    token: true
+  handleLogOut = () => {
+    this.props.signout()
+    this.props.history.push('/')
   }
   render () {
-    const { token } = this.state
+    const { token } = this.props.auth
     return (
       <NavbarBrowser collapseOnSelect expand="lg" bg="white" variant="light" className="containerNavbar">
         <NavbarBrowser.Brand><Link to="/"><img src={Brand} alt="..." /></Link></NavbarBrowser.Brand>
@@ -32,8 +36,12 @@ class Navbar extends Component {
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Jawa Barat</NavDropdown.Item>
             </NavDropdown>
-            {!token
-              ? (<Link to="/profile" className="btn-signup-mobile">Profile</Link>
+            {token
+              ? (
+                <>
+                  <Link to="/profile" className="btn-signup-mobile">Profile</Link>
+                  <div onClick={this.handleLogOut} className="btn-signup-mobile">Sign out</div>
+                </>
                 )
               : (<Link to="/sign-up" className="btn-signup-mobile">Sign up</Link>
                 )}
@@ -51,8 +59,13 @@ class Navbar extends Component {
               <FormControl type="text" placeholder="Search" className="input-search-mobile sm-2" />
               <Button type="submit" className="btn-search"><img src={Search} alt=".." /></Button>{' '}
             </div>
-            {!token
-              ? (<Link to="/profile"><img src={ProfileIcon} className='navbarImg' /></Link>
+            {token
+              ? (
+                // <OverlayTrigger trigger="click" placement="left" overlay={popover}>
+                //   <img src={ProfileIcon} className='navbarImg' />
+                // </OverlayTrigger>
+                // <Link to="/profile"><img src={ProfileIcon} className='navbarImg' /></Link>
+                <Overlays />
                 )
               : (<Link to="/register"><Button type="submit" className="btn-signup ml-2 p-2">Sign up</Button>{' '}</Link>
                 )
@@ -63,4 +76,9 @@ class Navbar extends Component {
     )
   }
 }
-export default Navbar
+
+const mapStateToProps = (state) => ({
+  auth: state.auth
+})
+const mapDispatchToProps = { signout }
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Navbar))
