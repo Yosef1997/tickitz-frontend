@@ -128,14 +128,6 @@ class index extends Component {
                       <span className="checkmark"></span>
                     </label>
                   </div>
-
-                  {this.props.auth.message !== '' && isMessage
-                    ? (
-                    <div className='textSuccess'>
-                      {this.props.auth.message}
-                    </div>
-                      )
-                    : null}
                   {this.props.auth.errorMsg !== '' && isMessage
                     ? (
                     <div className='textError'>
