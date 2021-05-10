@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './UpcomingShow.css'
 import { Container, Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import BtnMonth from '../BtnMonth'
 import { connect } from 'react-redux'
 import { allMovie, detailMovie } from '../../Redux/Action/movie'
@@ -12,10 +12,13 @@ class index extends Component {
   async componentDidMount () {
     await this.props.allMovie()
   }
-
+  handleMovie =async (id) => {
+    console.log(id, 'Upcoming Movie')
+    const { token } = this.props.auth
+    await this.props.detailMovie(token, id)
+  }
   render () {
     const { allMovie } = this.props.movie
-
     return (
       <Container fluid className="Upcoming">
         <Row className="Upcoming-row1">
@@ -33,14 +36,14 @@ class index extends Component {
         </Row>
         <Row>
           <Col className="Upcoming-col3">
-            {allMovie.map((item, idx) => {
+            {allMovie.map((item) => {
               return (
                 <>
-            <div key={idx} className="Upcoming-card">
+            <div key={item.id} className="Upcoming-card">
               <img src={`${URL}/upload/movie/${item.picture}`} alt='...' className="Upcoming-img" />
               <div className="upcomingCardTitle">Black Widow</div>
               <div className="upcomingCardGenre">Action, Adventure, Sci-Fi</div>
-              <Link to='/movie'><div className="upcomingCardBtn">Details</div></Link>
+              <div onClick={() => this.handleMovie(item.id)} className="upcomingCardBtn">Details</div>
             </div>
                 </>
               )
@@ -60,4 +63,4 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = { allMovie, detailMovie }
 
-export default connect(mapStateToProps, mapDispatchToProps)(index)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))

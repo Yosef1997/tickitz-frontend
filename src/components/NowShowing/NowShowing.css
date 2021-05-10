@@ -69,6 +69,7 @@
   border: 2px solid #FFFFFF;
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
 }
 
 .nowShow-img{

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './NowShowing.css'
 import { Container, Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 // import Spiderman2 from '../../assets/Rectangle119spiderman.png'
 import { connect } from 'react-redux'
 import { allMovie, detailMovie } from '../../Redux/Action/movie'
@@ -12,6 +12,13 @@ class index extends Component {
   async componentDidMount () {
     await this.props.allMovie()
   }
+
+  handleMovie = (id) => {
+    console.log(id, 'idMovie')
+    const { token } = this.props.auth
+    this.props.detailMovie(token, id)
+  }
+
   render () {
     const { allMovie } = this.props.movie
     return (
@@ -28,17 +35,15 @@ class index extends Component {
         </Row>
         <Row>
           <Col className="nowShow-col3">
-          {allMovie.map((item, idx) => {
-            return (
-              <>
-            <div key={idx} className="nowShow-card">
-              <Link to="/movie">
+            {allMovie.map((item) => {
+              return (
+                <>
+                  <div key={item.id} onClick={() => this.handleMovie(item.id)} className="nowShow-card">
                     <img src={`${URL}/upload/movie/${item.picture}`} alt='...' className="nowShow-img" />
-              </Link>
-            </div>
-            </>
-            )
-          })}
+                  </div>
+                </>
+              )
+            })}
           </Col>
         </Row>
       </Container>
@@ -53,4 +58,4 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = { allMovie, detailMovie }
 
-export default connect(mapStateToProps, mapDispatchToProps)(index)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))
