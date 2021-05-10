@@ -166,6 +166,15 @@
   font-size: 18px;
 }
 
+.textError {
+  color: red;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  margin-top: 10px;
+}
+
 @media only screen and (max-width: 992px) {
   .registerLegend {
     display: none;

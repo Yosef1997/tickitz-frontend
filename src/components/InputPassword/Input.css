@@ -32,6 +32,7 @@ input {
   width: 100%;
   height: 100%;
   border: none;
+  background-color: transparent;
   transition: 0.5s;
   padding: 0px 30px;
 }
@@ -70,7 +71,6 @@ input:focus {
   box-shadow: none;
 
 }
-
 
 svg {
   color: #A0A3BD;

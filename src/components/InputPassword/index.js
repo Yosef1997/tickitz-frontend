@@ -22,6 +22,7 @@ export default class index extends Component {
             type={this.state.type ? 'password' : 'text'}
             onChange={this.props.onChange}
             value={this.props.value}
+            onBlur={this.props.onBlur}
             placeholder={this.props.placeholder}
           />
 

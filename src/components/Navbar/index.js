@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 class Navbar extends Component {
   state ={
-    token: false
+    token: true
   }
   render () {
     const { token } = this.state

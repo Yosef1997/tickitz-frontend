@@ -9,7 +9,12 @@ export default class index extends Component {
         <Form.Label className='labelInput'>{this.props.label}</Form.Label>
         <div className='inputNumber'>
           <div className='countryCode'>+62</div>
-          <input type={this.props.type} onChange={this.props.onChange} value={this.props.value} placeholder={this.props.placeholder} />
+          <input
+          type={this.props.type}
+          onChange={this.props.onChange}
+          value={this.props.value}
+          onBlur={this.props.onBlur}
+          placeholder={this.props.placeholder} />
         </div>
       </div>
     )
