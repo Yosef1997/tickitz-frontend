@@ -15,9 +15,9 @@ class index extends Component {
     this.props.history.push('/movie/seat/payment')
   }
   handleClickChooseSeat = (event) => {
-    this.setState({ selectedSeat: event.target.id })
-    console.log(this.state.selectedSeat)
-    console.log(event.target.id)
+    // const { selectedSeat } = this.state
+    // this.setState({ selectedSeat: [...selectedSeat, event.target.id] })
+    // console.log(this.state.selectedSeat)
 
     // if (event.target.id && event.target.checked === false) {
     //   const newData = seat.filter(seat => seat !== event.target.id)
