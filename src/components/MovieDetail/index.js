@@ -3,8 +3,9 @@ import './MovieDetail.css'
 import { Container, Row, Col } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
 import moment from 'moment'
-import Spiderman from '../../assets/spiderman.jpg'
 import { connect } from 'react-redux'
+
+const { REACT_APP_API_URL: URL } = process.env
 
 class index extends Component {
   render () {
@@ -15,7 +16,7 @@ class index extends Component {
         <Row className="mt-5">
           <Col lg={4} className="detailCol1">
             <div className="detailImg">
-              <img src={Spiderman} alt="..." />
+              <img src={`${URL}/upload/movie/${detailMovie.picture}`} alt="..." />
             </div>
           </Col>
           <Col lg={8} className="detailCol2">
