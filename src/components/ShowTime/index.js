@@ -40,13 +40,15 @@ class index extends React.Component {
     })
   }
 
-  handleDate = date => {
+  handleDate = async (date) => {
+    const { token } = this.props.auth
+    await this.props.detailDate(token, date.value)
     this.setState({ date })
-    console.log('idDate:', date.value)
   };
-  handleLocation = location => {
+  handleLocation = async (location) => {
+    const { token } = this.props.auth
+    await this.props.detailLocation(token, location.value)
     this.setState({ location })
-    console.log('idLocation:', location.value)
   };
   render () {
     const { date, location, dataDate, dataLocation } = this.state
