@@ -35,9 +35,24 @@
   margin-left: 10px;
 }
 
+.showTimeCinemaText {
+  color: grey;
+  font-family: 'Mulish', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 20px;
+}
+
 @media only screen and (max-width: 992px) {
   .showTime {
-    padding: 40px 0px 20px;
+    padding: 40px  20px;
+  }
+  .showTimeCinema {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .showTimeTitle {
     color: #000000;
