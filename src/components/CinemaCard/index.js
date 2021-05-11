@@ -1,77 +1,105 @@
 import React, { Component } from 'react'
 import './Cinema.css'
 import { Container, Row, Col, Button, ButtonGroup, ToggleButton } from 'react-bootstrap'
-import Logo from '../../assets/ebv.jpg'
+// import Logo from '../../assets/ebv.jpg'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { allCinema, detailCinema, allTime, detailTime } from '../../Redux/Action/showTime'
+
+const { REACT_APP_API_URL: URL } = process.env
 
 class index extends Component {
   state = {
-    radios: [
-      { name: '9.30am', value: '1' },
-      { name: '10.00am', value: '2' },
-      { name: '11.00am', value: '3' },
-      { name: '12.00pm', value: '4' },
-      { name: '13.00pm', value: '5' }
-    ],
+    radios: [],
     checked: false,
     radioValue: ''
   }
-  handleTime = e => {
-    this.setState({ radioValue: e.currentTarget.value })
-    console.log('time', e.currentTarget.value)
+  async componentDidMount () {
+    const { token } = this.props.auth
+    await this.props.allCinema(token)
+    await this.props.allTime(token)
+    const time = this.props.movie.allTime.map(item => ({
+      name: item.time,
+      value: String(item.id)
+    }))
+    this.setState({ radios: time })
   }
-  handleCinema = () => {
+
+  handleTime = async (event) => {
+    const { token } = this.props.auth
+    await this.props.detailTime(token, event.target.value)
+    this.setState({ radioValue: event.target.value })
+  }
+  handleCinema = async (id) => {
+    const { token } = this.props.auth
+    await this.props.detailCinema(token, id)
     this.props.history.push('/movie/seat/')
   }
   render () {
     const { radios, radioValue } = this.state
+    const { allCinema } = this.props.movie
+
     return (
       <Container fluid className='cinema'>
         <Row>
-          <Col lg={4}>
-            <div className='cinemaCard'>
-              <div className='cinemaHeader'>
-                <img src={Logo} alt='...' className="cinemaImg" />
-                <div>
-                  <div className='cinemaName'>ebv.id</div>
-                  <div className='cinemaAddress'>Whatever street No.12, South Purwokerto</div>
+          {allCinema.map((item) => {
+            return (
+              <>
+              <Col key={item.id} lg={4}>
+                <div className='cinemaCard'>
+                  <div className='cinemaHeader'>
+                    <img src={`${URL}/upload/cinema/${item.picture}`} alt='...' className="cinemaImg" />
+                    <div>
+                      <div className='cinemaName'>{item.name}</div>
+                      <div className='cinemaAddress'>{item.address}</div>
+                    </div>
+                  </div>
+                  <div className='cinemaTime'>
+                    {radios.map((radio, idx) => (
+                      <ButtonGroup toggle key={idx}>
+                        <ToggleButton
+                          type="checkbox"
+                          variant="light"
+                          name="radio"
+                          value={radio.value}
+                          checked={radioValue === radio.value}
+                          onChange={this.handleTime}
+                          className='cinemaTimeBtn'
+                        >
+                          {radio.name}
+                        </ToggleButton>
+                      </ButtonGroup>
+                    ))}
+                  </div>
+                  <div className="cinemaPrice">
+                    <div className="cinemaPriceText">Price</div>
+                    <div className="cinemaPriceTotal">{`$${item.price}.00/seat`}</div>
+                  </div>
+                  <div className="cinemaBtnForm">
+                    <Button onClick={() => this.handleCinema(item.id)} className="cinemaBookBtn">Book now</Button>
+                    <Button className="cinemaCartBtn">Add to cart</Button>
+                  </div>
                 </div>
-              </div>
-              <div className='cinemaTime'>
-                {radios.map((radio, idx) => (
-                  <ButtonGroup toggle key={idx}>
-                    <ToggleButton
-                      type="checkbox"
-                      variant="light"
-                      name="radio"
-                      value={radio.value}
-                      checked={radioValue === radio.value}
-                      onChange={this.handleTime}
-                      className='cinemaTimeBtn'
-                    >
-                      {radio.name}
-                    </ToggleButton>
-                  </ButtonGroup>
-                ))}
-              </div>
-              <div className="cinemaPrice">
-                <div className="cinemaPriceText">Price</div>
-                <div className="cinemaPriceTotal">$10.00/seat</div>
-              </div>
-              <div className="cinemaBtnForm">
-                <Button onClick={() => this.handleCinema()} className="cinemaBookBtn">Book now</Button>
-                <Button className="cinemaCartBtn">Add to cart</Button>
-              </div>
-            </div>
-          </Col>
+              </Col>
+            </>
+            )
+          })}
         </Row>
+
         <Row>
           <Col className='text-center'>
-          <Button onClick className="cinemaViewMore">view more</Button>
+            <Button onClick className="cinemaViewMore">view more</Button>
           </Col>
+
         </Row>
       </Container>
     )
   }
 }
-export default withRouter(index)
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  movie: state.movie
+})
+const mapDispatchToProps = { allCinema, detailCinema, allTime, detailTime }
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))
