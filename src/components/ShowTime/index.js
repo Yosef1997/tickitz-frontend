@@ -1,11 +1,12 @@
 import React from 'react'
 import Select from 'react-select'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Spinner } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
 import moment from 'moment'
 import Calender from '../../assets/calender-icon.png'
 import Location from '../../assets/location.png'
 import './ShowTime.css'
+import Cinema from '../CinemaCard'
 import { connect } from 'react-redux'
 import {
   allDate,
@@ -19,7 +20,8 @@ class index extends React.Component {
     dataDate: [],
     dataLocation: [],
     date: '',
-    location: ''
+    location: '',
+    isLoading: false
   };
 
   async componentDidMount () {
@@ -46,12 +48,16 @@ class index extends React.Component {
     this.setState({ date })
   };
   handleLocation = async (location) => {
+    this.setState({ isLoading: true })
     const { token } = this.props.auth
     await this.props.detailLocation(token, location.value)
     this.setState({ location })
+    setTimeout(() => {
+      this.setState({ isLoading: false })
+    }, 2000)
   };
   render () {
-    const { date, location, dataDate, dataLocation } = this.state
+    const { date, location, dataDate, dataLocation, isLoading } = this.state
 
     return (
       <Container fluid className='showTime'>
@@ -61,28 +67,39 @@ class index extends React.Component {
           </Col>
         </Row>
         <Row className='showTimeBtn'>
-            <div className='dropDown'>
-              <img src={Calender} />
-              <Select
-                className='dropDownInput'
-                placeholder='Set a date'
-                value={date}
-                onChange={this.handleDate}
-                options={dataDate}
-              />
-            </div>
-            <div className='dropDown'>
-              <img src={Location} />
-              <Select
-                className='dropDownInput'
-                placeholder='Set a city'
-                value={location}
-                onChange={this.handleLocation}
-                options={dataLocation}
-              />
-            </div>
+          <div className='dropDown'>
+            <img src={Calender} />
+            <Select
+              className='dropDownInput'
+              placeholder='Set a date'
+              value={date}
+              onChange={this.handleDate}
+              options={dataDate}
+            />
+          </div>
+          <div className='dropDown'>
+            <img src={Location} />
+            <Select
+              className='dropDownInput'
+              placeholder='Set a city'
+              value={location}
+              onChange={this.handleLocation}
+              options={dataLocation}
+            />
+          </div>
         </Row>
+        <Row>
+          <Col className='showTimeCinema'>
+            {date === '' || location === ''
+              ? (<div className='showTimeCinemaText'>Please set a date and a location</div>)
+              : (
+                <>
+                {isLoading === true ? (<div className='d-flex justify-content-center mt-5'><Spinner animation="border" variant="dark" /></div>) : (<Cinema />)}
+                </>
+                )}
 
+          </Col>
+        </Row>
       </Container>
     )
   }
