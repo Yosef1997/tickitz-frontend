@@ -3,17 +3,22 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import './OrderSeat.css'
 import OrderInfo from '../OrderInfo'
 import { Link, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class index extends Component {
   state={
-    seatSold: ['A5']
+    seatSold: ['A5'],
+    selectedSeat: []
   }
 
   handleCheckOut =() => {
     this.props.history.push('/movie/seat/payment')
   }
   handleClickChooseSeat = (event) => {
+    this.setState({ selectedSeat: event.target.id })
+    console.log(this.state.selectedSeat)
     console.log(event.target.id)
+
     // if (event.target.id && event.target.checked === false) {
     //   const newData = seat.filter(seat => seat !== event.target.id)
     //   setSeat(newData)
@@ -39,14 +44,14 @@ class index extends Component {
   }
 
   render () {
-    // const { seatSold } = this.state
+    const { detailMovie } = this.props.order
     return (
       <Container fluid className='orderSeat'>
         <Row>
           <Col lg={8}>
             <div className='orderTitle orderWeb'>Movie Selected</div>
             <div className='orderDetailForm orderWeb'>
-              <div className='orderMovie'>Spider-Man: Homecoming</div>
+              <div className='orderMovie'>{detailMovie.name}</div>
               <Link to='/' className='orderChangeBtn'>Change movie</Link>
             </div>
             <div className='orderTitle'>Choose Your Seat</div>
@@ -169,5 +174,7 @@ class index extends Component {
     )
   }
 }
-
-export default withRouter(index)
+const mapStateToProps = (state) => ({
+  order: state.order
+})
+export default connect(mapStateToProps)(withRouter(index))
