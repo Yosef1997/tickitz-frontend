@@ -82,7 +82,6 @@ class index extends Component {
                           )
                         : (<Button onClick={() => this.handleCinema(item.id)} className="cinemaBookBtn">Book now</Button>
                           )}
-                      {/* <Button onClick={() => this.handleCinema(item.id)} className="cinemaBookBtn">Book now</Button> */}
                       <Button className="cinemaCartBtn">Add to cart</Button>
                     </div>
                   </div>
@@ -106,7 +105,6 @@ class index extends Component {
 const mapStateToProps = (state) => ({
   auth: state.auth,
   movie: state.movie
-  // order: state.order
 })
 const mapDispatchToProps = { allCinema, detailCinema, allTime, detailTime }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))
