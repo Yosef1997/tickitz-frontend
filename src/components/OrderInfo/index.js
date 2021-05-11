@@ -18,11 +18,11 @@ export default class index extends Component {
               <div>
                 <div className='orderInfoDetail'>
                   <div className='orderInfo1'>Movie selected</div>
-                  <div className='orderInfo2'>Spider-Man: Homecoming</div>
+                  <div className='orderInfo2'>{this.props.movie}</div>
                 </div>
                 <div className='orderInfoDetail'>
-                  <div className='orderInfo1'>Tuesday, 07 July 2020</div>
-                  <div className='orderInfo2'>02:00pm</div>
+                  <div className='orderInfo1'>{this.props.date}</div>
+                  <div className='orderInfo2'>{this.props.time}</div>
                 </div>
                 <div className='orderInfoDetail'>
                   <div className='orderInfo1'>One ticket price</div>
@@ -30,7 +30,7 @@ export default class index extends Component {
                 </div>
                 <div className='orderInfoDetail'>
                   <div className='orderInfo1'>Seat choosed</div>
-                  <div className='orderInfo2'>C4, C5, C6</div>
+                  <div className='orderInfo2'>{this.props.seat}</div>
                 </div>
               </div>
               <div>

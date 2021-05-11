@@ -6,6 +6,7 @@ import moment from 'moment'
 import Calender from '../../assets/calender-icon.png'
 import Location from '../../assets/location.png'
 import './ShowTime.css'
+import Cinema from '../CinemaCard'
 import { connect } from 'react-redux'
 import {
   allDate,
@@ -61,28 +62,30 @@ class index extends React.Component {
           </Col>
         </Row>
         <Row className='showTimeBtn'>
-            <div className='dropDown'>
-              <img src={Calender} />
-              <Select
-                className='dropDownInput'
-                placeholder='Set a date'
-                value={date}
-                onChange={this.handleDate}
-                options={dataDate}
-              />
-            </div>
-            <div className='dropDown'>
-              <img src={Location} />
-              <Select
-                className='dropDownInput'
-                placeholder='Set a city'
-                value={location}
-                onChange={this.handleLocation}
-                options={dataLocation}
-              />
-            </div>
+          <div className='dropDown'>
+            <img src={Calender} />
+            <Select
+              className='dropDownInput'
+              placeholder='Set a date'
+              value={date}
+              onChange={this.handleDate}
+              options={dataDate}
+            />
+          </div>
+          <div className='dropDown'>
+            <img src={Location} />
+            <Select
+              className='dropDownInput'
+              placeholder='Set a city'
+              value={location}
+              onChange={this.handleLocation}
+              options={dataLocation}
+            />
+          </div>
         </Row>
-
+        <Row>
+          <Cinema />
+        </Row>
       </Container>
     )
   }
