@@ -151,7 +151,6 @@ class index extends Component {
                             )}
                       </>
                       )}
-
                 </>
               )}
             </Formik>
