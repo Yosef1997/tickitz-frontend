@@ -197,16 +197,27 @@ class index extends Component {
                   )
                 : (
                   <>
-                    <div>
-                      < Button variant='outline-light' onClick={handleSubmit} className="ProfileInputBtn">Update changes</Button>
-                    </div>
+                  {
+                    values.firstName === '' && values.lastName === '' && values.email === '' && values.phoneNumber === '' && values.newPassword === '' && values.repeatPassword === ''
+                      ? (
+                        <div>
+                          < Button variant='secondary' disabled className="ProfileInputBtn">Update changes</Button>
+                        </div>
+                        )
+                      : (
+                        <div>
+                          < Button variant='outline-light' onClick={handleSubmit} className="ProfileInputBtn">Update changes</Button>
+                        </div>
+                        )
+                  }
                   </>
                   )
               }
             </>
-          )}
+          )
+          }
         </Formik>
-      </Container>
+      </Container >
     )
   }
 }

@@ -32,11 +32,11 @@
   height: 56px;
 }
 
-.ProfileInputBtn:hover {
+/* .ProfileInputBtn:hover {
   color: #5F2EEA;
   font-style: normal;
   background-color: transparent;
   border: 1px solid #5F2EEA;
-}
+} */
 
 @media only screen and (max-width: 992px) {}
