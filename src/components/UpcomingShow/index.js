@@ -16,6 +16,7 @@ class index extends Component {
     console.log(id, 'Upcoming Movie')
     const { token } = this.props.auth
     await this.props.detailMovie(token, id)
+    this.props.history.push('/movie')
   }
   render () {
     const { allMovie } = this.props.movie
