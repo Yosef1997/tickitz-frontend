@@ -92,11 +92,6 @@ class index extends Component {
                         onBlur={handleBlur('firstName')}
                         placeholder={user.firstName === 'null' ? 'Write your first name' : user.firstName}
                       />
-                      {errors.firstName
-                        ? (
-                          <div className='textError'>{errors.firstName}</div>
-                          )
-                        : null}
                     </Col>
                     <Col>
                       <Input
@@ -107,11 +102,6 @@ class index extends Component {
                         onBlur={handleBlur('lastName')}
                         placeholder={user.lastName === 'null' ? 'Write your last name' : user.lastName}
                       />
-                      {errors.lastName
-                        ? (
-                          <div className='textError'>{errors.lastName}</div>
-                          )
-                        : null}
                     </Col>
                   </Row>
                   <Row className='mt-3'>
@@ -124,11 +114,6 @@ class index extends Component {
                         onBlur={handleBlur('email')}
                         placeholder={user.email === 'null' ? 'Write your email' : user.email}
                       />
-                      {errors.email
-                        ? (
-                          <div className='textError'>{errors.email}</div>
-                          )
-                        : null}
                     </Col>
                     <Col>
                       <InputNumber
@@ -139,11 +124,6 @@ class index extends Component {
                         onBlur={handleBlur('phoneNumber')}
                         placeholder={user.phoneNumber === 'null' ? 'Write your phone number' : user.phoneNumber}
                       />
-                      {errors.phoneNumber
-                        ? (
-                          <div className='textError'>{errors.phoneNumber}</div>
-                          )
-                        : null}
                     </Col>
                   </Row>
                 </Col>

@@ -24,7 +24,7 @@ class index extends Component {
             {user.firstName === 'null' && user.lastName === 'null'
               ? (<div className='profileCardName'>No Name</div>
                 )
-              : (<div className='profileCardName'>{`${user.firstName} ${user.lastName}`}</div>
+              : (<div className='profileCardName'>{`${user.firstName} ${user.lastName === 'null' ? '' : user.lastName}`}</div>
                 )}
             <div className='profileCardText2'>Moviegoers</div>
             <div className='profileCardLoyalty'>
