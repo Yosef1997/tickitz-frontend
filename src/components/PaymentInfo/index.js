@@ -39,7 +39,9 @@ class index extends Component {
     return errors
   }
 
-  handlePay = () => {
+  handlePay = async (values) => {
+    const { token } = this.props.auth
+    await this.props.updateUser(token, { fullName: values.fullName, email: values.email, phoneNumber: values.phoneNumber })
     this.props.history.push('/movie/seat/payment/ticket')
   }
   render () {
@@ -52,7 +54,7 @@ class index extends Component {
           initialValues={{
             fullName: `${user.firstName === 'null' && user.lastName === 'null' ? '' : `${user.firstName} ${user.lastName}`}`,
             email: `${user.email}`,
-            phoneNumber: `${user.phoneNumber}`
+            phoneNumber: `${user.phoneNumber === 'null' ? '' : user.phoneNumber}`
           }}
           validate={(values) => this.paymentValidation(values)}
           onSubmit={(values, { resetForm }) => {
@@ -163,7 +165,11 @@ class index extends Component {
                 <Col lg={8}>
                   <div className='payBtnFrom'>
                     <Link to='/movie/seat' className='paymentBackStep'>Prvious step</Link>
-                    <Button onClick={handleSubmit} className='paymentPay'>Pay your order</Button>
+                    {!errors.fullName && !errors.phoneNumber && values.fullName !== '' && values.phoneNumber !== ''
+                      ? (<Button onClick={handleSubmit} className='paymentPay'>Pay your order</Button>
+                        )
+                      : (<Button variant='secondary' disabled className='paymentPay'>Pay your order</Button>
+                        ) }
                   </div>
                 </Col>
               </Row>
