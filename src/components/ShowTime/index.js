@@ -12,7 +12,9 @@ import {
   allDate,
   detailDate,
   allLocation,
-  detailLocation
+  detailLocation,
+  allCinema,
+  allTime
 } from '../../Redux/Action/showTime'
 
 class index extends React.Component {
@@ -51,6 +53,8 @@ class index extends React.Component {
     this.setState({ isLoading: true })
     const { token } = this.props.auth
     await this.props.detailLocation(token, location.value)
+    await this.props.allCinema(token)
+    await this.props.allTime(token)
     this.setState({ location })
     setTimeout(() => {
       this.setState({ isLoading: false })
@@ -114,6 +118,8 @@ const mapDispatchToProps = {
   allDate,
   detailDate,
   allLocation,
-  detailLocation
+  detailLocation,
+  allCinema,
+  allTime
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))

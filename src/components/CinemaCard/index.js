@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import './Cinema.css'
 import { Container, Row, Col, Button, ButtonGroup, ToggleButton } from 'react-bootstrap'
-// import Logo from '../../assets/ebv.jpg'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { allCinema, detailCinema, allTime, detailTime } from '../../Redux/Action/showTime'
+import { detailCinema, detailTime } from '../../Redux/Action/showTime'
 
 const { REACT_APP_API_URL: URL } = process.env
 
@@ -15,9 +14,6 @@ class index extends Component {
     radioValue: ''
   }
   async componentDidMount () {
-    const { token } = this.props.auth
-    await this.props.allCinema(token)
-    await this.props.allTime(token)
     const time = this.props.movie.allTime.map(item => ({
       name: item.time,
       value: String(item.id)
@@ -106,5 +102,5 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
   movie: state.movie
 })
-const mapDispatchToProps = { allCinema, detailCinema, allTime, detailTime }
+const mapDispatchToProps = { detailCinema, detailTime }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))

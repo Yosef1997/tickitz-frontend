@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { Link, withRouter } from 'react-router-dom'
 import { Formik } from 'formik'
+import moment from 'moment'
 import { connect } from 'react-redux'
 import { updateUser } from '../../Redux/Action/auth'
 import './PaymentInfo.css'
@@ -18,22 +19,45 @@ import Input from '../Input'
 import InputNumber from '../InputNumber'
 
 class index extends Component {
+  state = {
+    isLoading: false,
+    isMessage: false
+  }
+
+  paymentValidation = (values) => {
+    const errors = {}
+    const { fullName, email, phoneNumber } = values
+    if (fullName.length < 3) {
+      errors.fullName = 'First name minimum 3 characters'
+    } else if (!email) {
+      errors.email = 'Email required'
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+      errors.email = 'Invalid email address'
+    } else if (phoneNumber.length < 11) {
+      errors.phoneNumber = 'Phone number minimum 11 numbers'
+    }
+    return errors
+  }
+
   handlePay = () => {
     this.props.history.push('/movie/seat/payment/ticket')
   }
   render () {
+    const { user } = this.props.auth
+    const { detailMovie, detailDate, detailTime, detailCinema } = this.props.order
+
     return (
       <Container fluid className='payment'>
         <Formik
           initialValues={{
-            fullName: '',
-            email: '',
-            phoneNumber: ''
+            fullName: `${user.firstName === 'null' && user.lastName === 'null' ? '' : `${user.firstName} ${user.lastName}`}`,
+            email: `${user.email}`,
+            phoneNumber: `${user.phoneNumber}`
           }}
-          // validate={(values) => this.profileValidation(values)}
+          validate={(values) => this.paymentValidation(values)}
           onSubmit={(values, { resetForm }) => {
             this.setState({ isLoading: true })
-            this.doUpdate(values)
+            this.handlePay(values)
             setTimeout(() => {
               resetForm()
             }, 500)
@@ -47,15 +71,15 @@ class index extends Component {
                   <div className='paymentForm'>
                     <div className='paymentDetail'>
                       <div className='paymentDetail1'>Date & time</div>
-                      <div className='paymentDetail2'>{`${'Tuesday, 07 July 2020'} at ${'02:00pm'}`}</div>
+                      <div className='paymentDetail2'>{`${moment(detailDate.date).format('dddd, DD MMMM YYYY')} at ${detailTime.time}`}</div>
                     </div>
                     <div className='paymentDetail'>
                       <div className='paymentDetail1'>Movie title</div>
-                      <div className='paymentDetail2'>Spider-Man: Homecoming</div>
+                      <div className='paymentDetail2'>{detailMovie.name}</div>
                     </div>
                     <div className='paymentDetail'>
                       <div className='paymentDetail1'>Cinema name</div>
-                      <div className='paymentDetail2'>CineOne21 Cinema</div>
+                      <div className='paymentDetail2'>{`${detailCinema.name} Cinema`}</div>
                     </div>
                     <div className='paymentDetail'>
                       <div className='paymentDetail1'>Number of tickets</div>
@@ -106,6 +130,7 @@ class index extends Component {
                         onChange={handleChange('fullName')}
                         onBlur={handleBlur('fullName')}
                         placeholder='Write your full name' />
+                      {errors.fullName ? (<div className='textError'>{errors.fullName}</div>) : (null)}
                     </div>
                     <div className='mb-4'>
                       <Input
@@ -115,6 +140,7 @@ class index extends Component {
                         onChange={handleChange('email')}
                         onBlur={handleBlur('email')}
                         placeholder='Write your email' />
+                      {errors.email ? (<div className='textError'>{errors.email}</div>) : (null)}
                     </div>
                     <div className='mb-4'>
                       <InputNumber
@@ -124,6 +150,7 @@ class index extends Component {
                         onChange={handleChange('phoneNumber')}
                         onBlur={handleBlur('phoneNumber')}
                         placeholder='Write your phone number' />
+                      {errors.phoneNumber ? (<div className='textError'>{errors.phoneNumber}</div>) : (null)}
                     </div>
                     <div className='PersonalInfoCaution'>
                       <img src={Warning} className='mr-3' />
@@ -136,7 +163,7 @@ class index extends Component {
                 <Col lg={8}>
                   <div className='payBtnFrom'>
                     <Link to='/movie/seat' className='paymentBackStep'>Prvious step</Link>
-                    <Button onClick={this.handlePay} className='paymentPay'>Pay your order</Button>
+                    <Button onClick={handleSubmit} className='paymentPay'>Pay your order</Button>
                   </div>
                 </Col>
               </Row>
@@ -148,7 +175,8 @@ class index extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
+  order: state.order
 })
 const mapDispatchToProps = { updateUser }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))
