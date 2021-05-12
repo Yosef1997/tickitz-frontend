@@ -151,4 +151,22 @@
   left: 240px;
 }
 
+.textError {
+  color: red;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+.textSuccess {
+  color: green;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  margin-top: 10px;
+}
+
 @media only screen and (max-width: 992px) {}
