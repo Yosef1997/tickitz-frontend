@@ -28,7 +28,7 @@
 
 .profileCardBtn {
   cursor: pointer;
-  margin: 0px auto 32px;
+  margin: 0px auto 0px;
   width: 136px;
   height: 136px;
   border-radius: 136px;
@@ -53,7 +53,7 @@
   font-weight: 600;
   font-size: 20px;
   text-align: center;
-  margin-bottom: 4px;
+  margin: 32px 0px 4px;
 }
 
 .profileCardText2 {

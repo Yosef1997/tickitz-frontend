@@ -1,14 +1,53 @@
+/* eslint-disable no-return-assign */
 import React, { Component } from 'react'
 import './Profile.css'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Spinner } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { updateUser } from '../../Redux/Action/auth'
 import Profil from '../../assets/avanger.jpg'
 import Star from '../../assets/star.png'
 
+const { REACT_APP_API_URL: URL } = process.env
+
 class index extends Component {
+  state = {
+    isLoading: false,
+    message: '',
+    selectedFile: false
+  }
+  uploadPicture = async (value) => {
+    this.setState({ isLoading: true })
+    const FILE_SIZE = 500 * 1024
+    const SUPPORTED_FORMATS = [
+      'image/jpg',
+      'image/jpeg',
+      'image/gif',
+      'image/png'
+    ]
+    const { token, user } = this.props.auth
+
+    console.log(SUPPORTED_FORMATS.indexOf(value.type))
+    if (SUPPORTED_FORMATS.indexOf(value.type) === -1) {
+      setTimeout(() => {
+        this.setState({ isLoading: false, message: 'File not compatibel' })
+      }, 2000)
+    } else if (FILE_SIZE < value.size) {
+      setTimeout(() => {
+        this.setState({ isLoading: false, message: 'File to large' })
+      }, 2000)
+    } else {
+      await this.props.updateUser(token, { id: user.id, picture: (value) })
+      setTimeout(() => {
+        this.setState({ isLoading: false, message: 'Update profile succsefully', selectedFile: true })
+      }, 2000)
+    }
+    setTimeout(() => {
+      this.setState({ message: '', selectedFile: false })
+    }, 6000)
+  }
   render () {
+    const { isLoading, message, selectedFile } = this.state
     const { user } = this.props.auth
     return (
       <Container fluid className='profileCard'>
@@ -18,9 +57,26 @@ class index extends Component {
               <div className='profileCardText1'>INFO</div>
               <Link className='profileCardMenu'>. . .</Link>
             </div>
-            <div onClick={() => console.log('image')} className='profileCardBtn'>
-              <img src={Profil} className='profileCardImg' />
+            {/* // eslint-disable-next-line no-return-assign */}
+            <input
+              style={{ display: 'none' }}
+              type='file'
+              onChange={(event) => this.uploadPicture(event.target.files[0])}
+              ref={fileInput => this.fileInput = fileInput}
+            />
+            <div onClick={() => this.fileInput.click()} className='profileCardBtn'>
+              {user.picture === null
+                ? <img src={Profil} className='profileCardImg' />
+                : <img src={`${URL}/upload/profile/${user.picture}`} className='profileCardImg' />
+              }
             </div>
+            {isLoading
+              ? (<div className='d-flex flex-row justify-content-center mt-3'>
+                <Spinner animation="grow" size="md" variant="success" />
+              </div>
+                )
+              : (null)}
+            {message !== '' && selectedFile ? <div className='textSuccess text-center'>{message}</div> : <div className='textError text-center'>{message}</div>}
             {user.firstName === 'null' && user.lastName === 'null'
               ? (<div className='profileCardName'>No Name</div>
                 )
