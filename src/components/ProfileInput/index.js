@@ -62,7 +62,7 @@ class index extends Component {
         <Formik
           initialValues={{
             firstName: '',
-            lastName: '',
+            lastName: `${user.lastName === 'null' || user.lastName === '' ? '' : user.lastName}`,
             email: '',
             phoneNumber: '',
             newPassword: '',
