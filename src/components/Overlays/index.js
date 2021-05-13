@@ -22,6 +22,7 @@ function index () {
   }
   const handleLogOut = () => {
     dispatch(signout())
+    history.push('/')
   }
   return (
     <div ref={ref}>
