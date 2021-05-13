@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import './Ticket.css'
 import { Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
+import { connect } from 'react-redux'
 import Logo from '../../assets/tickitzwhite.png'
 import Barcode from '../../assets/QRBarcode.png'
 import Download from '../../assets/download-icon.png'
 import Print from '../../assets/print.png'
 
-export default class index extends Component {
+class index extends Component {
   render () {
+    const { detailMovie, detailDate, detailTime } = this.props.order
     return (
       <Container fluid>
         <Row>
@@ -29,15 +32,15 @@ export default class index extends Component {
               <div className='d-flex mb-5'>
                 <div className='ticketBodyLeft'>
                   <div className='ticketBodyDetail'>Movie</div>
-                  <div className='ticketBodyText'>Spider-Man: Homecoming</div>
+                  <div className='ticketBodyText'>{detailMovie.name}</div>
                   <Row className='mt-3'>
                     <Col>
                       <div className='ticketBodyDetail'>Date</div>
-                      <div className='ticketBodyText'>07 July</div>
+                      <div className='ticketBodyText'>{moment(detailDate.date).format('DD MMMM')}</div>
                     </Col>
                     <Col>
                       <div className='ticketBodyDetail'>Time</div>
-                      <div className='ticketBodyText'>02:00pm</div>
+                      <div className='ticketBodyText'>{detailTime.time}</div>
                     </Col>
                     <Col>
                       <div className='ticketBodyDetail'>Category</div>
@@ -85,3 +88,9 @@ export default class index extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  order: state.order
+})
+
+export default connect(mapStateToProps)(index)
