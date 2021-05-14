@@ -10,8 +10,11 @@ import Download from '../../assets/download-icon.png'
 import Print from '../../assets/print.png'
 
 class index extends Component {
+  componentDidMount () {
+    console.log(this.props.order.purchase)
+  }
   render () {
-    const { detailMovie, detailDate, detailTime } = this.props.order
+    const { purchase } = this.props.order
     return (
       <Container fluid>
         <Row>
@@ -32,15 +35,15 @@ class index extends Component {
               <div className='d-flex mb-5'>
                 <div className='ticketBodyLeft'>
                   <div className='ticketBodyDetail'>Movie</div>
-                  <div className='ticketBodyText'>{detailMovie.name}</div>
+                  <div className='ticketBodyText'>{this.props.order.purchase.movie}</div>
                   <Row className='mt-3'>
                     <Col>
                       <div className='ticketBodyDetail'>Date</div>
-                      <div className='ticketBodyText'>{moment(detailDate.date).format('DD MMMM')}</div>
+                      <div className='ticketBodyText'>{moment(purchase.date).format('DD MMMM')}</div>
                     </Col>
                     <Col>
                       <div className='ticketBodyDetail'>Time</div>
-                      <div className='ticketBodyText'>{detailTime.time}</div>
+                      <div className='ticketBodyText'>{purchase.time}</div>
                     </Col>
                     <Col>
                       <div className='ticketBodyDetail'>Category</div>
@@ -50,15 +53,15 @@ class index extends Component {
                   <Row className='mt-3'>
                     <Col>
                       <div className='ticketBodyDetail'>Count</div>
-                      <div className='ticketBodyText'>{`${3} pieces`}</div>
+                      <div className='ticketBodyText'>{`${purchase.seat} pieces`}</div>
                     </Col>
                     <Col>
                       <div className='ticketBodyDetail'>Seats</div>
-                      <div className='ticketBodyText'>02:00pm</div>
+                      <div className='ticketBodyText'>{purchase.seat}</div>
                     </Col>
                     <Col>
                       <div className='ticketBodyDetail'>Price</div>
-                      <div className='ticketBodyTotal'>{`$${'30'}.00`}</div>
+                      <div className='ticketBodyTotal'>{`$${purchase.price}.00`}</div>
                     </Col>
                   </Row>
                 </div>
