@@ -8,7 +8,7 @@ import { seatOrder, allSoldSeat } from '../../Redux/Action/order'
 
 class index extends Component {
   state={
-    seatSold: `${this.props.order.soldSeat === null ? [] : this.props.order.soldSeat}`,
+    seatSold: [],
     selectedSeat: [],
     price: 0
   }
@@ -53,6 +53,7 @@ class index extends Component {
 
   async componentDidMount () {
     await this.getSeatSold()
+    this.setState({ seatSold: this.props.order.soldSeat })
   }
 
   render () {

@@ -6,7 +6,7 @@ const initialState = {
   detailTime: null,
   detailSeat: null,
   seatOrder: null,
-  soldSeat: null,
+  soldSeat: [],
   purchase: null,
   history: null,
   message: '',
@@ -22,7 +22,9 @@ const orderReducer = (state = initialState, action) => {
         detailDate: null,
         detailLocation: null,
         detailCinema: null,
-        detailTime: null
+        detailTime: null,
+        seatOrder: null,
+        soldSeat: []
       }
     }
     case 'DETAIL_DATE': {
@@ -76,7 +78,8 @@ const orderReducer = (state = initialState, action) => {
     case 'ORDER_MESSAGE': {
       return {
         ...state,
-        errorMsg: action.payload
+        errorMsg: action.payload,
+        soldSeat: []
       }
     }
     case 'PURCHASE': {
