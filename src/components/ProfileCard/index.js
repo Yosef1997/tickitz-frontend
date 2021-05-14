@@ -4,7 +4,7 @@ import './Profile.css'
 import { Container, Row, Col, Spinner } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { updateUser } from '../../Redux/Action/auth'
+import { updateUser, deletePicture } from '../../Redux/Action/auth'
 import Profil from '../../assets/avanger.jpg'
 import Star from '../../assets/star.png'
 
@@ -46,10 +46,23 @@ class index extends Component {
       this.setState({ message: '', selectedFile: false })
     }, 6000)
   }
-  render () {
-    const { isLoading, message, selectedFile } = this.state
-    const { user } = this.props.auth
-    return (
+
+deletePicture = async () => {
+  this.setState({ isLoading: true })
+  const { token } = this.props.auth
+  await this.props.deletePicture(token, { id: this.props.auth.user.id })
+  setTimeout(() => {
+    this.setState({ isLoading: false, message: 'Delete picture profile successfully' })
+  }, 2000)
+  setTimeout(() => {
+    this.setState({ message: '', selectedFile: false })
+  }, 5000)
+}
+
+render () {
+  const { isLoading, message, selectedFile } = this.state
+  const { user } = this.props.auth
+  return (
       <Container fluid className='profileCard'>
         <Row>
           <Col>
@@ -57,7 +70,6 @@ class index extends Component {
               <div className='profileCardText1'>INFO</div>
               <Link className='profileCardMenu'>. . .</Link>
             </div>
-            {/* // eslint-disable-next-line no-return-assign */}
             <input
               style={{ display: 'none' }}
               type='file'
@@ -76,6 +88,7 @@ class index extends Component {
               </div>
                 )
               : (null)}
+            {user.picture !== null && !isLoading && message === '' ? <div onClick={this.deletePicture} className='profilCardDeleteBtn'>Delete Picture</div> : null}
             {message !== '' && selectedFile ? <div className='textSuccess text-center'>{message}</div> : <div className='textError text-center'>{message}</div>}
             {user.firstName === 'null' && user.lastName === 'null'
               ? (<div className='profileCardName'>No Name</div>
@@ -103,12 +116,12 @@ class index extends Component {
           </Col>
         </Row>
       </Container>
-    )
-  }
+  )
+}
 }
 
 const mapStateToProps = (state) => ({
   auth: state.auth
 })
-const mapDispatchToProps = { updateUser }
+const mapDispatchToProps = { updateUser, deletePicture }
 export default connect(mapStateToProps, mapDispatchToProps)(index)
