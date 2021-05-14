@@ -68,4 +68,14 @@
   box-shadow: none;
 }
 
+.orderHistoryEmpty {
+  color: grey;
+  font-family: 'Mulish', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 20px;
+}
+
 @media only screen and (max-width: 992px) {}

@@ -79,7 +79,8 @@ const orderReducer = (state = initialState, action) => {
       return {
         ...state,
         errorMsg: action.payload,
-        soldSeat: []
+        soldSeat: [],
+        history: null
       }
     }
     case 'PURCHASE': {
