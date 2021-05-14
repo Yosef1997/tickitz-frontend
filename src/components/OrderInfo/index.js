@@ -40,7 +40,7 @@ class index extends Component {
               <div>
                 <div className='orderInfoDetail'>
                   <div className='orderInfoTotal'>Total Payment</div>
-                  <div className='orderInfoPrice'>{this.props.price}</div>
+                  <div className='orderInfoPrice'>{`$${this.props.price}`}</div>
                 </div>
               </div>
             </div>

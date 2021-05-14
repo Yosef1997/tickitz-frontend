@@ -14,7 +14,7 @@ class index extends Component {
     console.log(this.props.order.purchase)
   }
   render () {
-    const { purchase } = this.props.order
+    const [purchase] = this.props.order.purchase
     return (
       <Container fluid>
         <Row>
@@ -35,7 +35,7 @@ class index extends Component {
               <div className='d-flex mb-5'>
                 <div className='ticketBodyLeft'>
                   <div className='ticketBodyDetail'>Movie</div>
-                  <div className='ticketBodyText'>{this.props.order.purchase.movie}</div>
+                  <div className='ticketBodyText'>{purchase.movie}</div>
                   <Row className='mt-3'>
                     <Col>
                       <div className='ticketBodyDetail'>Date</div>
@@ -53,11 +53,11 @@ class index extends Component {
                   <Row className='mt-3'>
                     <Col>
                       <div className='ticketBodyDetail'>Count</div>
-                      <div className='ticketBodyText'>{`${purchase.seat} pieces`}</div>
+                      <div className='ticketBodyText'>{`${purchase.seat.length} pieces`}</div>
                     </Col>
                     <Col>
                       <div className='ticketBodyDetail'>Seats</div>
-                      <div className='ticketBodyText'>{purchase.seat}</div>
+                      <div className='ticketBodyText'>{purchase.seat.join(',')}</div>
                     </Col>
                     <Col>
                       <div className='ticketBodyDetail'>Price</div>

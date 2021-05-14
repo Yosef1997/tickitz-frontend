@@ -2,7 +2,7 @@ import http from '../../Helper/http'
 import moment from 'moment'
 
 // Seat
-export const seatOrder = (seat) => {
+export const seatOrder = (seat, price) => {
   return async (dispatch) => {
     try {
       dispatch({
@@ -11,7 +11,7 @@ export const seatOrder = (seat) => {
       })
       dispatch({
         type: 'SEAT_ORDER',
-        payload: seat
+        payload: { seat: seat, price: price }
       })
     } catch (err) {
       console.log(err)

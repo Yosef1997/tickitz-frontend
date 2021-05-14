@@ -5,6 +5,7 @@ import { Formik } from 'formik'
 import moment from 'moment'
 import { connect } from 'react-redux'
 import { updateUser } from '../../Redux/Action/auth'
+import { purchase } from '../../Redux/Action/order'
 import './PaymentInfo.css'
 import BCA from '../../assets/bca.png'
 import BRI from '../../assets/bri.png'
@@ -40,14 +41,16 @@ class index extends Component {
   }
 
   handlePay = async (values) => {
-    const { token } = this.props.auth
+    const { token, user } = this.props.auth
+    const { detailMovie, detailDate, detailLocation, detailTime, detailCinema, seatOrder } = this.props.order
     await this.props.updateUser(token, { fullName: values.fullName, email: values.email, phoneNumber: values.phoneNumber })
+    await this.props.purchase(token, detailMovie.name, detailDate.date, detailLocation.name, detailTime.time, detailCinema.name, seatOrder.seat, user.id)
     this.props.history.push('/movie/seat/payment/ticket')
   }
+
   render () {
     const { user } = this.props.auth
-    const { detailMovie, detailDate, detailTime, detailCinema } = this.props.order
-
+    const { detailMovie, detailDate, detailTime, detailCinema, seatOrder } = this.props.order
     return (
       <Container fluid className='payment'>
         <Formik
@@ -85,11 +88,11 @@ class index extends Component {
                     </div>
                     <div className='paymentDetail'>
                       <div className='paymentDetail1'>Number of tickets</div>
-                      <div className='paymentDetail2'>3 pieces</div>
+                      <div className='paymentDetail2'>{`${seatOrder.seat.length} pieces`}</div>
                     </div>
                     <div className='paymentDetail border-0'>
                       <div className='paymentDetail1'>Total payment</div>
-                      <div className='paymentDetail2'>{`$${'30'},00`}</div>
+                      <div className='paymentDetail2'>{`$${seatOrder.price},00`}</div>
                     </div>
                   </div>
 
@@ -184,5 +187,5 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
   order: state.order
 })
-const mapDispatchToProps = { updateUser }
+const mapDispatchToProps = { updateUser, purchase }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))

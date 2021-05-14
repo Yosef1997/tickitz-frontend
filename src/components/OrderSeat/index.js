@@ -4,47 +4,61 @@ import './OrderSeat.css'
 import OrderInfo from '../OrderInfo'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { seatOrder, allSoldSeat } from '../../Redux/Action/order'
 
 class index extends Component {
   state={
-    seatSold: ['A5'],
-    selectedSeat: []
+    seatSold: [],
+    selectedSeat: [],
+    price: 0
   }
-
-  handleCheckOut =() => {
+  getSeatSold = async () => {
+    const { detailMovie, detailDate, detailLocation, detailTime, detailCinema } = this.props.order
+    const { token } = this.props.auth
+    await this.props.allSoldSeat(token, detailMovie.name, detailDate.date, detailLocation.name, detailTime.time, detailCinema.name)
+  }
+  handleCheckOut =async () => {
+    await this.props.seatOrder(this.state.selectedSeat, this.state.price)
     this.props.history.push('/movie/seat/payment')
   }
   handleClickChooseSeat = (event) => {
-    // const { selectedSeat } = this.state
-    // this.setState({ selectedSeat: [...selectedSeat, event.target.id] })
-    // console.log(this.state.selectedSeat)
+    const { selectedSeat, price } = this.state
+    const priceMovie = 10
+    this.setState({ selectedSeat: [...selectedSeat, event.target.id] })
 
-    // if (event.target.id && event.target.checked === false) {
-    //   const newData = seat.filter(seat => seat !== event.target.id)
-    //   setSeat(newData)
-    //   if (event.target.id.indexOf('F10') > -1) {
-    //     const loveNest = priceMovie * 2
-    //     setPrice(price - loveNest)
-    //     dispatch(totalPayment(price - loveNest))
-    //   } else {
-    //     setPrice(price - priceMovie)
-    //     dispatch(totalPayment(price - priceMovie))
-    //   }
-    // } else {
-    //   setSeat([...seat, event.target.id])
-    //   if (event.target.id.indexOf('F10') > -1) {
-    //     const loveNest = priceMovie * 2
-    //     setPrice(price + loveNest)
-    //     dispatch(totalPayment(price + loveNest))
-    //   } else {
-    //     setPrice(price + priceMovie)
-    //     dispatch(totalPayment(price + priceMovie))
-    //   }
-    // }
+    if (event.target.id && event.target.checked === false) {
+      const newData = selectedSeat.filter(seat => seat !== event.target.id)
+      this.setState({ selectedSeat: newData })
+      if (event.target.id.indexOf('F10') > -1) {
+        const loveNest = priceMovie * 2
+        this.setState({ price: price - loveNest })
+        // dispatch(totalPayment(price - loveNest))
+      } else {
+        this.setState({ price: price - priceMovie })
+        // dispatch(totalPayment(price - priceMovie))
+      }
+    } else {
+      this.setState({ selectedSeat: [...selectedSeat, event.target.id] })
+      if (event.target.id.indexOf('F10') > -1) {
+        const loveNest = priceMovie * 2
+        this.setState({ price: price + loveNest })
+        // dispatch(totalPayment(price + loveNest))
+      } else {
+        this.setState({ price: price + priceMovie })
+        // dispatch(totalPayment(price + priceMovie))
+      }
+    }
+    console.log(this.state.selectedSeat)
+  }
+
+  async componentDidMount () {
+    await this.getSeatSold()
+    this.setState({ seatSold: this.props.order.soldSeat })
   }
 
   render () {
     const { detailMovie } = this.props.order
+    const { seatSold, selectedSeat, price } = this.state
     return (
       <Container fluid className='orderSeat'>
         <Row>
@@ -68,14 +82,14 @@ class index extends Component {
                           <div className="seat-layout">{row}</div>
                           {[1, 2, 3, 4, 5, 6, 7].map((column, idx) => {
                             return (
-                              <input key={idx} type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className={'seat-layout btn-seat-layout btn-seat'} />
-                              // <>
-                              //   {
-                              //     seatSold.split(',').indexOf(`${row}${column}`) > -1
-                              //       ? <input type="checkbox" id={`${row}${column}`} onClick={(event) => handleClickChooseSeat(event)} className={'seat-layout btn-seat-layout btn-seat'} disabled />
-                              //       : <input type="checkbox" id={`${row}${column}`} onClick={(event) => handleClickChooseSeat(event)} className={'seat-layout btn-seat-layout btn-seat'} />
-                              //   }
-                              // </>
+                              // <input key={idx} type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className={'seat-layout btn-seat-layout btn-seat'} />
+                              <>
+                                {
+                                  seatSold.indexOf(`${row}${column}`) > -1
+                                    ? <input key={idx} type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className={'seat-layout btn-seat-layout btn-seat'} disabled />
+                                    : <input key={idx} type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className={'seat-layout btn-seat-layout btn-seat'} />
+                                }
+                              </>
                             )
                           })}
                         </Row>
@@ -105,20 +119,20 @@ class index extends Component {
                                 {
                                   row === 'F' && column === 10
                                     ? <>
-                                    <input type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className="seat-layout_love-nest btn-seat-layout_love-nest btn-seat" style={{ width: 60 }} />
-                                      {/* {
-                                        seatSold.split(',').indexOf(`${row}${column}`) > -1
-                                          ? <input type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className="seat-layout_love-nest btn-seat-layout_love-nest btn-seat bg-gray-light" style={{ width: 60 }} disabled />
-                                          : <input type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className="seat-layout_love-nest btn-seat-layout_love-nest btn-seat bg-gray-light" style={{ width: 60 }} />
-                                      } */}
+                                    {/* <input type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className="seat-layout_love-nest btn-seat-layout_love-nest btn-seat" style={{ width: 60 }} /> */}
+                                      {
+                                        seatSold.indexOf(`${row}${column}`) > -1
+                                          ? <input type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className="seat-layout_love-nest btn-seat-layout_love-nest btn-seat" style={{ width: 60 }} disabled />
+                                          : <input type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className="seat-layout_love-nest btn-seat-layout_love-nest btn-seat" style={{ width: 60 }} />
+                                      }
                                     </>
                                     : <>
-                                    <input type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className="seat-layout btn-seat-layout btn-seat" />
-                                      {/* {
-                                        seatSold.split(',').indexOf(`${row}${column}`) > -1
-                                          ? <input type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className="seat-layout btn-seat-layout btn-seat bg-gray-light" disabled />
-                                          : <input type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className="seat-layout btn-seat-layout btn-seat bg-gray-light" />
-                                      } */}
+                                    {/* <input type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className="seat-layout btn-seat-layout btn-seat" /> */}
+                                      {
+                                        seatSold.indexOf(`${row}${column}`) > -1
+                                          ? <input type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className="seat-layout btn-seat-layout btn-seat" disabled />
+                                          : <input type="checkbox" id={`${row}${column}`} onClick={(event) => this.handleClickChooseSeat(event)} className="seat-layout btn-seat-layout btn-seat" />
+                                      }
                                     </>
                                 }
                               </>
@@ -167,14 +181,19 @@ class index extends Component {
             </div>
           </Col>
           <Col lg={4}>
-            <OrderInfo />
+            <OrderInfo seat={selectedSeat.join(',')} price={price} />
           </Col>
         </Row>
       </Container>
     )
   }
 }
+
 const mapStateToProps = (state) => ({
+  auth: state.auth,
   order: state.order
 })
-export default connect(mapStateToProps)(withRouter(index))
+
+const mapDispatchToProps = { seatOrder, allSoldSeat }
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))
