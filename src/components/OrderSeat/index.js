@@ -18,7 +18,7 @@ class index extends Component {
     await this.props.allSoldSeat(token, detailMovie.name, detailDate.date, detailLocation.name, detailTime.time, detailCinema.name)
   }
   handleCheckOut =async () => {
-    await this.props.seatOrder(this.state.selectedSeat)
+    await this.props.seatOrder(this.state.selectedSeat, this.state.price)
     this.props.history.push('/movie/seat/payment')
   }
   handleClickChooseSeat = (event) => {
