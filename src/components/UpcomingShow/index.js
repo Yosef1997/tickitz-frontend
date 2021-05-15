@@ -9,17 +9,14 @@ import { allMovie, detailMovie } from '../../Redux/Action/movie'
 const { REACT_APP_API_URL: URL } = process.env
 
 class index extends Component {
-  async componentDidMount () {
-    await this.props.allMovie()
-  }
-  handleMovie =async (id) => {
+  handleMovie = async (id) => {
     console.log(id, 'Upcoming Movie')
     const { token } = this.props.auth
     await this.props.detailMovie(token, id)
     this.props.history.push('/movie')
   }
   render () {
-    const { allMovie } = this.props.movie
+    const { allMovieByMonth } = this.props.movie
     return (
       <Container fluid className="Upcoming">
         <Row className="Upcoming-row1">
@@ -36,22 +33,27 @@ class index extends Component {
           <BtnMonth />
         </Row>
         <Row>
-          <Col className="Upcoming-col3">
-            {allMovie.map((item) => {
-              return (
-                <>
-            <div key={item.id} className="Upcoming-card">
-              <img src={`${URL}/upload/movie/${item.picture}`} alt='...' className="Upcoming-img" />
-              <div className="upcomingCardTitle">Black Widow</div>
-              <div className="upcomingCardGenre">Action, Adventure, Sci-Fi</div>
-              <div onClick={() => this.handleMovie(item.id)} className="upcomingCardBtn">Details</div>
-            </div>
-                </>
-              )
-            })}
-          </Col>
-        </Row>
+          {allMovieByMonth === null
+            ? <Col>
+              <div className="Upcoming-textLeft">Movie Not Found</div>
+            </Col>
+            : <Col className="Upcoming-col3">
+              {allMovieByMonth.map((item) => {
+                return (
+                  <>
+                    <div key={item.id} className="Upcoming-card">
+                      <img src={`${URL}/upload/movie/${item.picture}`} alt='...' className="Upcoming-img" />
+                      <div className="upcomingCardTitle">Black Widow</div>
+                      <div className="upcomingCardGenre">Action, Adventure, Sci-Fi</div>
+                      <div onClick={() => this.handleMovie(item.id)} className="upcomingCardBtn">Details</div>
+                    </div>
+                  </>
+                )
+              })}
+            </Col>
 
+          }
+        </Row>
       </Container>
     )
   }
