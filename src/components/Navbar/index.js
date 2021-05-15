@@ -3,7 +3,6 @@ import './Navbar.css'
 import { Navbar as NavbarBrowser, Nav, NavDropdown, FormControl, Button } from 'react-bootstrap'
 import Brand from '../../assets/tickitzpurple.png'
 import Search from '../../assets/searchicon.png'
-// import ProfileIcon from '../../assets/profil-icon.png'
 import Overlays from '../Overlays'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -61,10 +60,6 @@ class Navbar extends Component {
             </div>
             {token
               ? (
-                // <OverlayTrigger trigger="click" placement="left" overlay={popover}>
-                //   <img src={ProfileIcon} className='navbarImg' />
-                // </OverlayTrigger>
-                // <Link to="/profile"><img src={ProfileIcon} className='navbarImg' /></Link>
                 <Overlays />
                 )
               : (<Link to="/register"><Button type="submit" className="btn-signup ml-2 p-2">Sign up</Button>{' '}</Link>

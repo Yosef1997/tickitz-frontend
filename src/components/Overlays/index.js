@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react'
 import { Popover, Overlay } from 'react-bootstrap'
-import ProfileIcon from '../../assets/profil-icon.png'
+import ProfileIcon from '../../assets/profile.png'
 import './Overlays.css'
 import { withRouter, useHistory } from 'react-router-dom'
-import { useDispatch, connect } from 'react-redux'
+import { useDispatch, useSelector, connect } from 'react-redux'
 import { signout } from '../../Redux/Action/auth'
+
+const { REACT_APP_API_URL: URL } = process.env
 
 function index () {
   const history = useHistory()
@@ -12,6 +14,7 @@ function index () {
   const [show, setShow] = useState(false)
   const [target, setTarget] = useState(null)
   const ref = useRef(null)
+  const user = useSelector(state => state.auth.user)
 
   const handleClick = (event) => {
     setShow(!show)
@@ -27,7 +30,7 @@ function index () {
   return (
     <div ref={ref}>
       <div onClick={handleClick} className='navbarImgBtn'>
-        <img src={ProfileIcon} className='navbarImg' />
+        <img src={user.picture !== null ? `${URL}/upload/profile/${user.picture}` : `${ProfileIcon}`} className='navbarImg' />
       </div>
 
       <Overlay

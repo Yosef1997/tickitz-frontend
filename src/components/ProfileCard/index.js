@@ -5,7 +5,7 @@ import { Container, Row, Col, Spinner } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { updateUser, deletePicture } from '../../Redux/Action/auth'
-import Profil from '../../assets/avanger.jpg'
+import Profil from '../../assets/profile.png'
 import Star from '../../assets/star.png'
 
 const { REACT_APP_API_URL: URL } = process.env
