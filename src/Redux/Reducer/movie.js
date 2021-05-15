@@ -1,5 +1,5 @@
 const initialState = {
-  allMovie: null,
+  nowShow: null,
   allMovieByMonth: null,
   allDate: null,
   allLocation: null,
@@ -12,10 +12,10 @@ const initialState = {
 
 const movieReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ALL_MOVIE': {
+    case 'NOW_SHOW': {
       return {
         ...state,
-        allMovie: action.payload
+        nowShow: action.payload
       }
     }
     case 'ALL_MOVIE_BY_MONTH': {

@@ -1,6 +1,6 @@
 import http from '../../Helper/http'
 
-export const allMovie = (token, search, order, limit, page, sort) => {
+export const nowShow = (token, search, order, limit, page, sort) => {
   return async (dispatch) => {
     try {
       dispatch({
@@ -8,14 +8,14 @@ export const allMovie = (token, search, order, limit, page, sort) => {
         payload: ''
       })
       const results = await http(token).get(
-        `/movie?search=${search !== undefined ? search : ''}&limit=${
+        `/movie/month?search=${search !== undefined ? search : ''}&limit=${
           limit !== undefined ? limit : 4
         }&page=${page !== undefined ? page : 1}&sort=${
           sort !== undefined ? sort : 'id'
         }&order=${order !== undefined ? order : 'ASC'}`
       )
       dispatch({
-        type: 'ALL_MOVIE',
+        type: 'NOW_SHOW',
         payload: results.data.results
       })
       dispatch({

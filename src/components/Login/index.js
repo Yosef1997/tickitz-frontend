@@ -10,7 +10,7 @@ import Input from '../Input'
 import InputPassword from '../InputPassword'
 import { connect } from 'react-redux'
 import { signin } from '../../Redux/Action/auth'
-import { allMovie } from '../../Redux/Action/movie'
+// import { allMovie } from '../../Redux/Action/movie'
 
 class index extends Component {
   state = {
@@ -179,6 +179,6 @@ const mapStateToProps = (state) => ({
   auth: state.auth
 })
 
-const mapDispatchToProps = { signin, allMovie }
+const mapDispatchToProps = { signin }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))

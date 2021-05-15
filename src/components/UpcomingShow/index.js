@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import { Link, withRouter } from 'react-router-dom'
 import BtnMonth from '../BtnMonth'
 import { connect } from 'react-redux'
-import { allMovie, detailMovie } from '../../Redux/Action/movie'
+import { detailMovie } from '../../Redux/Action/movie'
 
 const { REACT_APP_API_URL: URL } = process.env
 
@@ -64,6 +64,6 @@ const mapStateToProps = (state) => ({
   movie: state.movie
 })
 
-const mapDispatchToProps = { allMovie, detailMovie }
+const mapDispatchToProps = { detailMovie }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))

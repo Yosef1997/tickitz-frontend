@@ -4,13 +4,14 @@ import { Container, Row, Col } from 'react-bootstrap'
 import { Link, withRouter } from 'react-router-dom'
 // import Spiderman2 from '../../assets/Rectangle119spiderman.png'
 import { connect } from 'react-redux'
-import { allMovie, detailMovie } from '../../Redux/Action/movie'
+import { nowShow, detailMovie } from '../../Redux/Action/movie'
 
 const { REACT_APP_API_URL: URL } = process.env
 
 class index extends Component {
   async componentDidMount () {
-    await this.props.allMovie()
+    const { token } = this.props.auth
+    await this.props.nowShow(token, `${new Date().getFullYear()}-0${new Date().getMonth() + 1}`)
   }
 
   handleMovie = (id) => {
@@ -21,7 +22,7 @@ class index extends Component {
   }
 
   render () {
-    const { allMovie } = this.props.movie
+    const { nowShow } = this.props.movie
     return (
       <Container fluid className="nowShow">
         <Row className="nowShow-row1">
@@ -36,7 +37,7 @@ class index extends Component {
         </Row>
         <Row>
           <Col className="nowShow-col3">
-            {allMovie.map((item) => {
+            {nowShow.map((item) => {
               return (
                 <>
                   <div key={item.id} onClick={() => this.handleMovie(item.id)} className="nowShow-card">
@@ -57,6 +58,6 @@ const mapStateToProps = (state) => ({
   movie: state.movie
 })
 
-const mapDispatchToProps = { allMovie, detailMovie }
+const mapDispatchToProps = { nowShow, detailMovie }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))
