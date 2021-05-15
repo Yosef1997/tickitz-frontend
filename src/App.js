@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import persistedStore from './Redux/store'
 import { PersistGate } from 'redux-persist/integration/react'
 
-// import PrivateRoute from './components/PrivateRoute/PrivateRoute'
+import PrivateRoute from './Helper/PrivateRoute'
 import ScrollToTop from './Helper/scrollToTop'
 import Home from './Pages/Home'
 import Register from './Pages/Register'
@@ -31,12 +31,12 @@ class App extends Component {
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
             <Route path="/forgetPassword" component={ForgetPassword} />
-            <Route path="/movie" exact component={Movie} />
+            <PrivateRoute path="/movie" exact privateComponent={Movie} />
             <Route path="/viewall" component={ViewAll} />
-            <Route path="/movie/seat/" exact component={Seat} />
-            <Route path="/movie/seat/payment" exact component={Payment} />
-            <Route path="/movie/seat/payment/ticket" exact component={Ticket} />
-            <Route path="/profile" component={Profile} />
+            <PrivateRoute path="/movie/seat/" exact privateComponent={Seat} />
+            <PrivateRoute path="/movie/seat/payment" exact privateComponent={Payment} />
+            <PrivateRoute path="/movie/seat/payment/ticket" exact privateComponent={Ticket} />
+            <PrivateRoute path="/profile" privateComponent={Profile} />
           </Switch>
         </BrowserRouter>
         </PersistGate>
