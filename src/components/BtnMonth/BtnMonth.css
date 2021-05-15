@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
 
 .colMonth{
-  overflow-y: scroll;
+  overflow-y: hidden;
+  overflow-x: scroll;
   display: flex;
+  padding: 5px 0px;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
@@ -45,6 +47,12 @@
 .btnMonth:hover {
   background-color: #5F2EEA;
   color: white;
+}
+
+.btnMonth:focus {
+  background-color: #5F2EEA;
+  color: white;
+  box-shadow: none;
 }
 
 .btnMonth:active {

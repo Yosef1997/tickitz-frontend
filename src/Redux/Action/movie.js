@@ -37,6 +37,43 @@ export const allMovie = (token, search, order, limit, page, sort) => {
   }
 }
 
+export const allMovieByMonth = (token, search, order, limit, page, sort) => {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: 'SET_MOVIE_MESSAGE',
+        payload: ''
+      })
+      const results = await http(token).get(
+        `/movie/month?search=${search !== undefined ? search : ''}&limit=${
+          limit !== undefined ? limit : 4
+        }&page=${page !== undefined ? page : 1}&sort=${
+          sort !== undefined ? sort : 'releaseDate'
+        }&order=${order !== undefined ? order : 'ASC'}`
+      )
+      dispatch({
+        type: 'ALL_MOVIE_BY_MONTH',
+        payload: results.data.results
+      })
+      dispatch({
+        type: 'PAGE_INFO_ALL_MOVIE',
+        payload: results.data.pageInfo
+      })
+      dispatch({
+        type: 'IS_LOADING',
+        payload: false
+      })
+    } catch (err) {
+      console.log(err)
+      const { message } = err.response.data
+      dispatch({
+        type: 'SET_MOVIE_MESSAGE',
+        payload: message
+      })
+    }
+  }
+}
+
 export const detailMovie = (token, id) => {
   return async (dispatch) => {
     try {

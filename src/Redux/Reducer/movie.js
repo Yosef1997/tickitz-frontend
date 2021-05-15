@@ -1,5 +1,6 @@
 const initialState = {
   allMovie: null,
+  allMovieByMonth: null,
   allDate: null,
   allLocation: null,
   allCinema: null,
@@ -15,6 +16,12 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         allMovie: action.payload
+      }
+    }
+    case 'ALL_MOVIE_BY_MONTH': {
+      return {
+        ...state,
+        allMovieByMonth: action.payload
       }
     }
     case 'PAGE_INFO_ALL_MOVIE':
