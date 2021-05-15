@@ -55,7 +55,7 @@ class index extends Component {
       <Container fluid className='payment'>
         <Formik
           initialValues={{
-            fullName: `${user.firstName === 'null' && user.lastName === 'null' ? '' : `${user.firstName} ${user.lastName}`}`,
+            fullName: `${user.firstName === 'null' && user.lastName === 'null' ? '' : `${user.firstName} ${user.lastName === 'null' ? '' : user.lastName}`}`,
             email: `${user.email}`,
             phoneNumber: `${user.phoneNumber === 'null' ? '' : user.phoneNumber}`
           }}
