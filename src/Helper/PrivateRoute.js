@@ -10,7 +10,7 @@ class PrivateRoute extends Component {
         if (this.props.auth.token) {
           return <Component {...props} />
         } else {
-          return <Redirect to={{ pathname: '/login' }} />
+          return <Redirect to={{ pathname: '/register' }} />
         }
       }}>
 
