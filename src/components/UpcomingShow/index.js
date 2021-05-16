@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import './UpcomingShow.css'
 import { Container, Row, Col } from 'react-bootstrap'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import BtnMonth from '../BtnMonth'
 import { connect } from 'react-redux'
-import { detailMovie } from '../../Redux/Action/movie'
+import { searchMovie, detailMovie } from '../../Redux/Action/movie'
 
 const { REACT_APP_API_URL: URL } = process.env
 
@@ -15,6 +15,11 @@ class index extends Component {
     await this.props.detailMovie(token, id)
     this.props.history.push('/movie')
   }
+  handleViewAll = async () => {
+    const { token } = this.props.auth
+    await this.props.searchMovie(token, '', 'name')
+    this.props.history.push('viewall')
+  }
   render () {
     const { allMovieByMonth } = this.props.movie
     return (
@@ -24,9 +29,9 @@ class index extends Component {
             <p className="Upcoming-textLeft">Upcoming Movies</p>
           </Col>
           <Col className="Upcoming-col2">
-            <Link to="/viewall">
+            <div onClick={this.handleViewAll}>
               <p className="Upcoming-textRight">View All</p>
-            </Link>
+            </div>
           </Col>
         </Row>
         <Row className="Upcoming-month">
@@ -64,6 +69,6 @@ const mapStateToProps = (state) => ({
   movie: state.movie
 })
 
-const mapDispatchToProps = { detailMovie }
+const mapDispatchToProps = { searchMovie, detailMovie }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))

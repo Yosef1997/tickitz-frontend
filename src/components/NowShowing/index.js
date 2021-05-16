@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './NowShowing.css'
 import { Container, Row, Col } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
-// import Spiderman2 from '../../assets/Rectangle119spiderman.png'
 import { connect } from 'react-redux'
 import { nowShow, searchMovie, detailMovie } from '../../Redux/Action/movie'
 
