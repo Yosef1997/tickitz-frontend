@@ -117,7 +117,7 @@ export const searchMovie = (token, search, sort, order, limit, page) => {
       })
       dispatch({
         type: 'PAGE_INFO_ALL_MOVIE',
-        payload: results.data.pageInfo
+        payload: results.data.pageInfo.nextLink
       })
     } catch (err) {
       console.log(err)
@@ -130,12 +130,12 @@ export const searchMovie = (token, search, sort, order, limit, page) => {
   }
 }
 
-export const newDataMovieFlatList = (movie, pageInfo) => {
+export const newLink = (pageInfo) => {
   return async (dispatch) => {
-    dispatch({
-      type: 'ALL_MOVIE',
-      payload: movie
-    })
+    // dispatch({
+    //   type: 'ALL_MOVIE',
+    //   payload: movie
+    // })
     dispatch({
       type: 'PAGE_INFO_ALL_MOVIE',
       payload: pageInfo

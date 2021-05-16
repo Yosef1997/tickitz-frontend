@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import './ViewAll.css'
 import { Container, Row, Col, Button, ButtonGroup, ToggleButton } from 'react-bootstrap'
-// import Profil from '../../assets/profile.png'
 import { connect } from 'react-redux'
-import { searchMovie, detailMovie } from '../../Redux/Action/movie'
+import { searchMovie, detailMovie, newLink } from '../../Redux/Action/movie'
 import { withRouter } from 'react-router'
+import http from '../../Helper/http'
 
 const { REACT_APP_API_URL: URL } = process.env
 
@@ -33,8 +33,17 @@ class index extends Component {
     this.props.history.push('/movie')
   }
 
+  handleViewMore = async () => {
+    const { pageInfoMovie } = this.props.movie
+    const newData = await http().get(pageInfoMovie)
+    await this.props.newLink(newData.data.pageInfo.nextLink)
+    console.log(pageInfoMovie.nextLink)
+    this.setState({ movie: [...this.state.movie, ...newData.data.results] })
+  }
+
   render () {
     const { options, radioValue, orderBy, movie } = this.state
+    const { pageInfoMovie } = this.props.movie
     return (
       <Container fluid className='viewAll'>
         <Row>
@@ -45,9 +54,8 @@ class index extends Component {
                 {options.map((option, idx) => {
                   return (
                     <>
-                      <ButtonGroup toggle>
+                      <ButtonGroup key={idx} toggle>
                         <ToggleButton
-                          key={idx}
                           type="radio"
                           className="viewAllOrderBtn"
                           name="options"
@@ -96,7 +104,9 @@ class index extends Component {
         </Row>
         <Row>
           <Col>
-          <div className='viewMore'>View More</div>
+          {pageInfoMovie !== null
+            ? <div onClick={this.handleViewMore} className='viewMore'>View More</div>
+            : null}
           </Col>
         </Row>
       </Container>
@@ -109,6 +119,6 @@ const mapStateToProps = (state) => ({
   movie: state.movie
 })
 
-const mapDispatchToProps = { searchMovie, detailMovie }
+const mapDispatchToProps = { searchMovie, detailMovie, newLink }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))
