@@ -43,7 +43,7 @@ class index extends Component {
                   <>
                     <div key={item.id} className="Upcoming-card">
                       <img src={`${URL}/upload/movie/${item.picture}`} alt='...' className="Upcoming-img" />
-                      <div className="upcomingCardTitle">Black Widow</div>
+                      <div className="upcomingCardTitle">{item.name}</div>
                       <div className="upcomingCardGenre">Action, Adventure, Sci-Fi</div>
                       <div onClick={() => this.handleMovie(item.id)} className="upcomingCardBtn">Details</div>
                     </div>
