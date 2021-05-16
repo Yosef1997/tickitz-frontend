@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import './NowShowing.css'
 import { Container, Row, Col } from 'react-bootstrap'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 // import Spiderman2 from '../../assets/Rectangle119spiderman.png'
 import { connect } from 'react-redux'
-import { nowShow, detailMovie } from '../../Redux/Action/movie'
+import { nowShow, searchMovie, detailMovie } from '../../Redux/Action/movie'
 
 const { REACT_APP_API_URL: URL } = process.env
 
@@ -21,6 +21,12 @@ class index extends Component {
     this.props.history.push('/movie')
   }
 
+  handleViewAll = async () => {
+    const { token } = this.props.auth
+    await this.props.searchMovie(token, '', 'name')
+    this.props.history.push('viewall')
+  }
+
   render () {
     const { nowShow } = this.props.movie
     return (
@@ -30,9 +36,9 @@ class index extends Component {
             <p className="nowShow-textLeft">Now Showing</p>
           </Col>
           <Col className="nowShow-col2">
-            <Link to="/viewall">
+            <div onClick={this.handleViewAll}>
               <p className="nowShow-textRight">View All</p>
-            </Link>
+            </div>
           </Col>
         </Row>
         <Row>
@@ -58,6 +64,6 @@ const mapStateToProps = (state) => ({
   movie: state.movie
 })
 
-const mapDispatchToProps = { nowShow, detailMovie }
+const mapDispatchToProps = { nowShow, searchMovie, detailMovie }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))

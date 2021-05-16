@@ -97,7 +97,7 @@ export const detailMovie = (token, id) => {
   }
 }
 
-export const searchMovie = (token, search, order, limit, page, sort) => {
+export const searchMovie = (token, search, sort, order, limit, page) => {
   return async (dispatch) => {
     try {
       dispatch({
@@ -106,7 +106,7 @@ export const searchMovie = (token, search, order, limit, page, sort) => {
       })
       const results = await http(token).get(
         `/movie?search=${search !== undefined ? search : ''}&limit=${
-          limit !== undefined ? limit : 4
+          limit !== undefined ? limit : 8
         }&page=${page !== undefined ? page : 1}&sort=${
           sort !== undefined ? sort : 'id'
         }&order=${order !== undefined ? order : 'ASC'}`

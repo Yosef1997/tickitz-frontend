@@ -1,39 +1,47 @@
 import React, { Component } from 'react'
 import './ViewAll.css'
 import { Container, Row, Col, Button, ButtonGroup, ToggleButton } from 'react-bootstrap'
-import Profil from '../../assets/profile.png'
+// import Profil from '../../assets/profile.png'
+import { connect } from 'react-redux'
+import { searchMovie, detailMovie } from '../../Redux/Action/movie'
+import { withRouter } from 'react-router'
 
-export default class index extends Component {
+const { REACT_APP_API_URL: URL } = process.env
+
+class index extends Component {
   state = {
     checked: false,
     radioValue: 'name',
     options: [
-      { name: 'Name', value: 'name' },
-      { name: 'Genre', value: 'genre' }
+      { name: 'Name', value: 'name' }
     ],
-    orderBy: true
+    orderBy: true,
+    movie: this.props.movie.searchMovie
   }
 
-  handleMonth = async (event) => {
-    this.setState({ radioValue: event.target.value })
-    // const { token } = this.props.auth
-    // await this.props.allMovieByMonth(token, event.target.value)
-    console.log(this.state.radioValue)
-  }
-
-  handleOrderBy = () => {
+  handleOrderBy = async (event) => {
     this.setState({ orderBy: !this.state.orderBy })
+    const { token } = this.props.auth
+    const { orderBy } = this.state
+    await this.props.searchMovie(token, '', 'name', `${orderBy ? 'DESC' : 'ASC'}`)
+    this.setState({ movie: this.props.movie.searchMovie })
+  }
+
+  handleMovie = async (id) => {
+    const { token } = this.props.auth
+    await this.props.detailMovie(token, id)
+    this.props.history.push('/movie')
   }
 
   render () {
-    const { options, radioValue, orderBy } = this.state
+    const { options, radioValue, orderBy, movie } = this.state
     return (
       <Container fluid className='viewAll'>
         <Row>
           <Col>
             <div className='viewAllSort'>
               <div className='viewAllSortBy'>Sort by</div>
-              <div className='d-flex justify-content-around w-50 text-right'>
+              <div className='d-flex justify-content-end w-50'>
                 {options.map((option, idx) => {
                   return (
                     <>
@@ -45,7 +53,7 @@ export default class index extends Component {
                           name="options"
                           value={option.value}
                           checked={radioValue === option.value}
-                          onChange={this.handleMonth}
+                          onChange={this.handleSort}
                         >
                           {option.name}
                         </ToggleButton>
@@ -71,26 +79,36 @@ export default class index extends Component {
           </Col>
         </Row>
         <Row>
-          {[...Array(8)].map((item, idx) => {
+          {movie.map((item) => {
             return (
               <>
-                <Col lg={3} className='mt-5 mx-0'>
+                <Col key={item.id} lg={3} className='mt-5 mx-0'>
                   <div className="viewAll-card">
-                    {/* key={item.id} */}
-                    {/* `${URL}/upload/movie/${item.picture}` */}
-                    {/* onClick={() => this.handleMovie(item.id)} */}
-                    <img src={Profil} alt='...' className="viewAll-img" />
-                    <div className="viewAllCardTitle">Black Widow</div>
+                    <img src={`${URL}/upload/movie/${item.picture}`} alt='...' className="viewAll-img" />
+                    <div className="viewAllCardTitle">{item.name}</div>
                     <div className="viewAllCardGenre">Action, Adventure, Sci-Fi</div>
-                    <div className="viewAllCardBtn">Details</div>
+                    <div onClick={() => this.handleMovie(item.id)} className="viewAllCardBtn">Details</div>
                   </div>
-
                 </Col>
               </>
             )
           })}
         </Row>
+        <Row>
+          <Col>
+          <div className='viewMore'>View More</div>
+          </Col>
+        </Row>
       </Container>
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  movie: state.movie
+})
+
+const mapDispatchToProps = { searchMovie, detailMovie }
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))
