@@ -31,6 +31,7 @@
   font-weight: normal;
   font-size: 16px;
   cursor: pointer;
+  margin-left: 20px;
 }
 
 .viewAllOrderBtn:hover {
@@ -55,6 +56,7 @@
   font-weight: normal;
   font-size: 16px;
   cursor: pointer;
+  margin-left: 20px;
 }
 
 .viewAllSortBtn:hover {
@@ -85,6 +87,7 @@
 .viewAll-img {
   width: 159px;
   height: 244px;
+  border-radius: 8px;
 }
 
 .viewAllCardTitle {
@@ -92,7 +95,7 @@
   font-family: 'Mulish',sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
   margin-top: 25px;
   margin-bottom: 8px;
@@ -105,7 +108,7 @@
   font-weight: normal;
   font-size: 12px;
   text-align: center;
-  height: 45px;
+  height: 35px;
 }
 
 .viewAllCardBtn {
@@ -118,5 +121,15 @@
   cursor: pointer;
 }
 
+.viewMore {
+  color: #5F2EEA;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 50px;
+}
 
 @media only screen and (max-width: 992px) {}

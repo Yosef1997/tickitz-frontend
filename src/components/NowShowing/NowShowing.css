@@ -34,6 +34,7 @@
   text-align: right;
   align-items: center;
   margin: auto;
+  cursor: pointer;
 }
 
 .nowShow-col3 {
