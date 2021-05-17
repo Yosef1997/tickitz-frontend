@@ -132,10 +132,6 @@ export const searchMovie = (token, search, sort, order, limit, page) => {
 
 export const newLink = (pageInfo) => {
   return async (dispatch) => {
-    // dispatch({
-    //   type: 'ALL_MOVIE',
-    //   payload: movie
-    // })
     dispatch({
       type: 'PAGE_INFO_ALL_MOVIE',
       payload: pageInfo
