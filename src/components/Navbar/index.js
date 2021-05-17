@@ -7,14 +7,25 @@ import Overlays from '../Overlays'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signout } from '../../Redux/Action/auth'
+import { searchMovie } from '../../Redux/Action/movie'
 
 class Navbar extends Component {
+  state = {
+    search: ''
+  }
   handleLogOut = () => {
     this.props.signout()
     this.props.history.push('/')
   }
+  handleSearch = async () => {
+    const { token } = this.props.auth
+    const { search } = this.state
+    await this.props.searchMovie(token, search)
+    this.props.history.push('/viewall')
+  }
   render () {
     const { token } = this.props.auth
+    console.log(this.state.search)
     return (
       <NavbarBrowser collapseOnSelect expand="lg" bg="white" variant="light" className="containerNavbar">
         <NavbarBrowser.Brand><Link to="/"><img src={Brand} alt="..." /></Link></NavbarBrowser.Brand>
@@ -55,8 +66,13 @@ class Navbar extends Component {
               <NavDropdown.Item href="#action/3.4">Jawa Barat</NavDropdown.Item>
             </NavDropdown>
             <div className="search-web">
-              <FormControl type="text" placeholder="Search" className="input-search-mobile sm-2" />
-              <Button type="submit" className="btn-search"><img src={Search} alt=".." /></Button>{' '}
+              <FormControl
+                type="text"
+                placeholder="Search"
+                onChange={(event) => this.setState({ search: event.target.value })}
+                className="input-search-mobile sm-2"
+              />
+              <Button type="submit" onClick={this.handleSearch} className="btn-search"><img src={Search} alt=".." /></Button>{' '}
             </div>
             {token
               ? (
@@ -75,5 +91,5 @@ class Navbar extends Component {
 const mapStateToProps = (state) => ({
   auth: state.auth
 })
-const mapDispatchToProps = { signout }
+const mapDispatchToProps = { signout, searchMovie }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Navbar))
