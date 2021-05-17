@@ -11,6 +11,7 @@ import Home from './Pages/Home'
 import Register from './Pages/Register'
 import Login from './Pages/Login'
 import ForgetPassword from './Pages/ForgetPassword'
+import Search from './Pages/Search'
 import Movie from './Pages/Movie'
 import ViewAll from './Pages/ViewAll'
 import Seat from './Pages/Seat'
@@ -33,6 +34,7 @@ class App extends Component {
             <Route path="/forgetPassword" component={ForgetPassword} />
             <PrivateRoute path="/movie" exact privateComponent={Movie} />
             <Route path="/viewall" component={ViewAll} />
+            <Route path="/search" component={Search} />
             <PrivateRoute path="/movie/seat/" exact privateComponent={Seat} />
             <PrivateRoute path="/movie/seat/payment" exact privateComponent={Payment} />
             <PrivateRoute path="/movie/seat/payment/ticket" exact privateComponent={Ticket} />

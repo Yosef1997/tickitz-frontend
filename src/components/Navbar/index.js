@@ -21,7 +21,7 @@ class Navbar extends Component {
     const { token } = this.props.auth
     const { search } = this.state
     await this.props.searchMovie(token, search)
-    this.props.history.push('/viewall')
+    this.props.history.push('/search')
   }
   render () {
     const { token } = this.props.auth

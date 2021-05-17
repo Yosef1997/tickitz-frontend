@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+.search {
+  background-color: #F5F6F8;
+  padding: 64px 130px;
+}
+
+.searchSort {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #DEDEDE;
+  padding-bottom: 20px;
+}
+
+.searchSortBy {
+  color: #414141;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.searchOrderBtn {
+  background-color: transparent;
+  border: none;
+  color: #414141;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.searchOrderBtn:hover {
+  color: #5F2EEA;
+  background-color: transparent;
+  border: none;
+}
+
+.searchOrderBtn:focus {
+  box-shadow: none;
+  background-color: #5F2EEA;
+  color: white;
+  font-weight: bold;
+}
+
+.searchSortBtn {
+  background-color: transparent;
+  border: none;
+  color: #414141;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.searchSortBtn:hover {
+  color: #5F2EEA;
+  background-color: transparent;
+  border: none;
+}
+
+.searchSortBtn:focus {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.searchSortBtn svg {
+  color: #5F2EEA;
+}
+
+.search-card {
+  text-align: center;
+  height: 452px;
+  padding: 24px;
+  border: 0.5px solid #DEDEDE;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.search-img {
+  width: 159px;
+  height: 244px;
+  border-radius: 8px;
+}
+
+.searchCardTitle {
+  color: #14142B;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 8px;
+}
+
+.searchCardGenre {
+  color: #A0A3BD;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  height: 35px;
+}
+
+.searchCardBtn {
+  border: 1px solid #5F2EEA;
+  border-radius: 4px;
+  text-align: center;
+  color: #5F2EEA;
+  padding: 10px 0;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.viewMore {
+  color: #5F2EEA;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 50px;
+}
+
+@media only screen and (max-width: 992px) {}

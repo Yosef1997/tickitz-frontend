@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './ViewAll.css'
+import './Search.css'
 import { Container, Row, Col, Button, ButtonGroup, ToggleButton } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { searchMovie, detailMovie, newLink } from '../../Redux/Action/movie'
@@ -15,13 +15,7 @@ class index extends Component {
     options: [
       { name: 'Name', value: 'name' }
     ],
-    orderBy: true,
-    movie: this.props.movie.searchMovie
-  }
-
-  componentWillUnmount () {
-    this.setState({ movie: this.props.movie.searchMovie })
-    console.log('tesssssssst')
+    orderBy: true
   }
 
   handleOrderBy = async () => {
@@ -29,7 +23,6 @@ class index extends Component {
     const { token } = this.props.auth
     const { orderBy } = this.state
     await this.props.searchMovie(token, '', 'name', `${orderBy ? 'DESC' : 'ASC'}`)
-    this.setState({ movie: this.props.movie.searchMovie })
   }
 
   handleMovie = async (id) => {
@@ -42,18 +35,17 @@ class index extends Component {
     const { pageInfoMovie } = this.props.movie
     const newData = await http().get(pageInfoMovie)
     await this.props.newLink(newData.data.pageInfo.nextLink)
-    this.setState({ movie: [...this.state.movie, ...newData.data.results] })
   }
 
   render () {
-    const { options, radioValue, orderBy, movie } = this.state
-    const { pageInfoMovie } = this.props.movie
+    const { options, radioValue, orderBy } = this.state
+    const { pageInfoMovie, searchMovie } = this.props.movie
     return (
-      <Container fluid className='viewAll'>
+      <Container fluid className='search'>
         <Row>
           <Col>
-            <div className='viewAllSort'>
-              <div className='viewAllSortBy'>Sort by</div>
+            <div className='searchSort'>
+              <div className='searchSortBy'>Sort by</div>
               <div className='d-flex justify-content-end w-50'>
                 {options.map((option, idx) => {
                   return (
@@ -62,7 +54,7 @@ class index extends Component {
                         <ToggleButton
                           key={idx}
                           type="radio"
-                          className="viewAllOrderBtn"
+                          className="searchOrderBtn"
                           name="options"
                           value={option.value}
                           checked={radioValue === option.value}
@@ -74,7 +66,7 @@ class index extends Component {
                     </>
                   )
                 })}
-                <Button onClick={this.handleOrderBy} className="viewAllSortBtn">
+                <Button onClick={this.handleOrderBy} className="searchSortBtn">
                   {orderBy
                     ? <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-sort-alpha-down" viewBox="0 0 16 16">
                       <path fillRule="evenodd" d="M10.082 5.629 9.664 7H8.598l1.789-5.332h1.234L13.402 7h-1.12l-.419-1.371h-1.781zm1.57-.785L11 2.687h-.047l-.652 2.157h1.351z" />
@@ -92,20 +84,27 @@ class index extends Component {
           </Col>
         </Row>
         <Row>
-          {movie.map((item) => {
-            return (
-              <>
-                <Col key={item.id} lg={3} className='mt-5 mx-0'>
-                  <div className="viewAll-card">
-                    <img src={`${URL}/upload/movie/${item.picture}`} alt='...' className="viewAll-img" />
-                    <div className="viewAllCardTitle">{item.name}</div>
-                    <div className="viewAllCardGenre">Action, Adventure, Sci-Fi</div>
-                    <div onClick={() => this.handleMovie(item.id)} className="viewAllCardBtn">Details</div>
-                  </div>
-                </Col>
-              </>
-            )
-          })}
+          {searchMovie === [null]
+            ? <Col><div>Movie Not Found</div></Col>
+
+            : <>
+            {searchMovie.map((item) => {
+              return (
+                <>
+                  <Col key={item.id} lg={3} className='mt-5 mx-0'>
+                    <div className="search-card">
+                      <img src={`${URL}/upload/movie/${item.picture}`} alt='...' className="search-img" />
+                      <div className="searchCardTitle">{item.name}</div>
+                      <div className="searchCardGenre">Action, Adventure, Sci-Fi</div>
+                      <div onClick={() => this.handleMovie(item.id)} className="searchCardBtn">Details</div>
+                    </div>
+                  </Col>
+                </>
+              )
+            })}
+          </>
+          }
+
         </Row>
         <Row>
           <Col>
