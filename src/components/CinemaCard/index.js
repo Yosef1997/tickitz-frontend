@@ -25,7 +25,6 @@ class index extends Component {
     const { token } = this.props.auth
     await this.props.detailTime(token, event.target.value)
     this.setState({ radioValue: event.target.value })
-    console.log(this.state.radioValue)
   }
   handleCinema = async (id) => {
     const { token } = this.props.auth

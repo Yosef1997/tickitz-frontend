@@ -28,14 +28,12 @@ class BtnMonth extends Component {
     this.setState({ radioValue: event.target.value })
     const { token } = this.props.auth
     await this.props.allMovieByMonth(token, event.target.value)
-    console.log(this.state.radioValue)
   }
 
   async componentDidMount () {
     const { token } = this.props.auth
     const { radioValue } = this.state
     await this.props.allMovieByMonth(token, radioValue)
-    console.log(this.state.radioValue)
   }
 
   render () {

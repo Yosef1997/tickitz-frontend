@@ -37,7 +37,6 @@ class index extends Component {
     const { pageInfoMovie } = this.props.movie
     const newData = await http().get(pageInfoMovie)
     await this.props.newLink(newData.data.pageInfo.nextLink)
-    console.log(pageInfoMovie.nextLink)
     this.setState({ movie: [...this.state.movie, ...newData.data.results] })
   }
 

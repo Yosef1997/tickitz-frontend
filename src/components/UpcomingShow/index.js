@@ -10,7 +10,6 @@ const { REACT_APP_API_URL: URL } = process.env
 
 class index extends Component {
   handleMovie = async (id) => {
-    console.log(id, 'Upcoming Movie')
     const { token } = this.props.auth
     await this.props.detailMovie(token, id)
     this.props.history.push('/movie')

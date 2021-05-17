@@ -44,7 +44,6 @@ class index extends Component {
         this.setState({ price: price + priceMovie })
       }
     }
-    console.log(this.state.selectedSeat)
   }
 
   async componentDidMount () {

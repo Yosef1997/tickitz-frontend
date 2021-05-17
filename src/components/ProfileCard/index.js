@@ -26,8 +26,6 @@ class index extends Component {
       'image/png'
     ]
     const { token, user } = this.props.auth
-
-    console.log(SUPPORTED_FORMATS.indexOf(value.type))
     if (SUPPORTED_FORMATS.indexOf(value.type) === -1) {
       setTimeout(() => {
         this.setState({ isLoading: false, message: 'File not compatibel' })
