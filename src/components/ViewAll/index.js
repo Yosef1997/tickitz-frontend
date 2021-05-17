@@ -19,7 +19,11 @@ class index extends Component {
     movie: this.props.movie.searchMovie
   }
 
-  handleOrderBy = async (event) => {
+  componentDidMount () {
+    this.setState({ movie: this.props.movie.searchMovie })
+  }
+
+  handleOrderBy = async () => {
     this.setState({ orderBy: !this.state.orderBy })
     const { token } = this.props.auth
     const { orderBy } = this.state
