@@ -34,7 +34,6 @@ class index extends Component {
                         <div className='orderHistoryForm'>
                           <div className='my-5'>
                             <div className='orderHistorySchedule'>{`${moment(item.date).format('dddd, DD MMMM YYYY')} - ${item.time}`}</div>
-                            {/* Tuesday, 07 July 2020 - 04:30pm */}
                             <div className='orderHistoryMovie'>{item.movie}</div>
                           </div>
                           <img src={Logo} className='orderHistoryImg' />

@@ -42,13 +42,6 @@ class BtnMonth extends Component {
     const { month, radioValue } = this.state
     return (
       <Col className="colMonth">
-        {/* {month.map((month, idx) => {
-        return (
-          <div key={idx}>
-            <Button className="btnMonth">{month.name}</Button>
-          </div>
-        )
-      })} */}
         {month.map((month, idx) => {
           return (
             <>

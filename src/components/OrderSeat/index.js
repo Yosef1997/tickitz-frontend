@@ -174,7 +174,6 @@ class index extends Component {
                 ? <Button variant='secondary' className='orderCheckOut' disabled>Checkout now</Button>
                 : <Button onClick={this.handleCheckOut} className='orderCheckOut' >Checkout now</Button>
               }
-              {/* <Button onClick={this.handleCheckOut} className='orderCheckOut'>Checkout now</Button> */}
             </div>
           </Col>
           <Col lg={4}>

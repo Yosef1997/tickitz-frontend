@@ -10,7 +10,6 @@ import Input from '../Input'
 import InputPassword from '../InputPassword'
 import { connect } from 'react-redux'
 import { signin } from '../../Redux/Action/auth'
-// import { allMovie } from '../../Redux/Action/movie'
 
 class index extends Component {
   state = {
@@ -42,7 +41,6 @@ class index extends Component {
   async doSignIn (values) {
     this.setState({ isLoading: true })
     await this.props.signin(values.email, values.password)
-    // await this.props.allMovie()
     setTimeout(() => {
       this.setState({ isLoading: false, isMessage: true })
     }, 3000)

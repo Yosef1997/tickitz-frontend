@@ -14,27 +14,6 @@ class index extends Component {
     isLoading: false
   }
 
-  // profileValidation = (values) => {
-  //   const errors = {}
-  //   const { firstName, lastName, email, phoneNumber, newPassword, repeatPassword } = values
-  //   if (firstName.length < 3) {
-  //     errors.firstName = 'First name minimum 3 characters'
-  //   } else if (lastName.length < 3) {
-  //     errors.lastName = 'Last name minimum 3 characters'
-  //   } else if (!email) {
-  //     errors.email = 'Email required'
-  //   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-  //     errors.email = 'Invalid email address'
-  //   } else if (phoneNumber.length < 11) {
-  //     errors.phoneNumber = 'Phone number minimum 11 numbers'
-  //   } else if (newPassword.length < 8) {
-  //     errors.password = 'Minimum password need 8 characters'
-  //   } else if (newPassword !== repeatPassword) {
-  //     errors.password = "New password doesn't match confrim password"
-  //   }
-  //   return errors
-  // }
-
   async doUpdate (values) {
     const { token } = this.props.auth
     const { user } = this.props.auth
@@ -68,7 +47,6 @@ class index extends Component {
             newPassword: '',
             repeatPassword: ''
           }}
-          // validate={(values) => this.profileValidation(values)}
           onSubmit={(values, { resetForm }) => {
             this.setState({ isLoading: true })
             this.doUpdate(values)

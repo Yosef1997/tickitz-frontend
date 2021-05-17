@@ -7,6 +7,9 @@ import Subcription from '../components/Subscription'
 import Footer from '../components/Footer'
 
 export default class Home extends Component {
+  componentDidMount () {
+    window.scrollTo(0, 0)
+  }
   render () {
     return (
       <>
