@@ -10,8 +10,12 @@ import Download from '../../assets/download-icon.png'
 import Print from '../../assets/print.png'
 
 class index extends Component {
+  componentDidMount () {
+    console.log(this.props.order.purchase)
+  }
   render () {
     const [purchase] = this.props.order.purchase
+    const { seatOrder } = this.props.order
     return (
       <Container fluid>
         <Row>
@@ -58,7 +62,7 @@ class index extends Component {
                     </Col>
                     <Col>
                       <div className='ticketBodyDetail'>Price</div>
-                      <div className='ticketBodyTotal'>{`$${purchase.price}.00`}</div>
+                      <div className='ticketBodyTotal'>{`$${seatOrder.price}.00`}</div>
                     </Col>
                   </Row>
                 </div>
