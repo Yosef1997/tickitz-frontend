@@ -25,7 +25,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-        <BrowserRouter basename='/React'>
+        <BrowserRouter basename='/'>
         <ScrollToTop />
           <Switch>
             <Route path="/" exact component={Home} />
