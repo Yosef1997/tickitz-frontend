@@ -97,4 +97,8 @@
   .forgetPasswordLegend {
     display: none;
   }
+  .forgetPasswordForm {
+    padding: 50px 24px;
+    overflow-y: hidden;
+  }
 }

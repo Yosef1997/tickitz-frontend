@@ -98,4 +98,14 @@
   .loginLegend {
     display: none;
   }
+  .loginForm {
+    padding: 50px 24px;
+    overflow-y: hidden;
+  }
+  .loginFormTitle {
+    margin-bottom: 39px;
+  }
+  .loginFormSubtitle {
+    display: none;
+  }
 }

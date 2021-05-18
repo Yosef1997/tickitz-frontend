@@ -61,6 +61,10 @@
   overflow-y: hidden;
 }
 
+.registerFormImg  {
+  display: none;
+}
+
 .registerFormTitle {
   color: #121212;
   font-family: 'Mulish',sans-serif;
@@ -178,5 +182,15 @@
 @media only screen and (max-width: 992px) {
   .registerLegend {
     display: none;
+  }
+  .registerForm {
+    padding: 50px 24px;
+    overflow-y: hidden;
+  }
+  .registerFormImg {
+    display: block;
+    width: 79px;
+    height: 20px;
+    margin-bottom: 47px;
   }
 }

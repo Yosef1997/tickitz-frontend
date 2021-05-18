@@ -53,7 +53,7 @@ class Navbar extends Component {
                   <div onClick={this.handleLogOut} className="btn-signup-mobile">Sign out</div>
                 </>
                 )
-              : (<Link to="/sign-up" className="btn-signup-mobile">Sign up</Link>
+              : (<Link to="/register" className="btn-signup-mobile">Sign up</Link>
                 )}
             <p className="nav-mobile">© 2020 Tickitz. All Rights Reserved.</p>
           </Nav>

@@ -4,6 +4,7 @@ import { Container, Row, Col, Button, Spinner, Alert } from 'react-bootstrap'
 import { Link, withRouter } from 'react-router-dom'
 import { Formik } from 'formik'
 import Logo from '../../assets/tickitzwhite.png'
+import LogoPurple from '../../assets/tickitzpurple.png'
 import Facebook from '../../assets/fb-logo.jpg'
 import Google from '../../assets/Google-logo.jpg'
 import Input from '../Input'
@@ -65,6 +66,7 @@ class index extends Component {
             </div>
           </Col>
           <Col lg={5} className='loginForm'>
+            <div className='registerFormImg'><img src={LogoPurple} alt='...' /></div>
             <div className='loginFormTitle'>Sign In</div>
             <div className='loginFormSubtitle'>
               Sign in with your data that you entered during<br />

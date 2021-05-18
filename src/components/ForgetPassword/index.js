@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './ForgetPass.css'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import Logo from '../../assets/tickitzwhite.png'
+import LogoPurple from '../../assets/tickitzpurple.png'
 import Input from '../Input'
 
 export default class index extends Component {
@@ -13,7 +14,7 @@ export default class index extends Component {
             <img src={Logo} />
             <div className='forgetPasswordLegendText1'>Lets reset your password</div>
             <div className='forgetPasswordLegendText2'>
-            To be able to use your account again, please<br />
+              To be able to use your account again, please<br />
             complete the following steps.
             </div>
             <div className='forgetPasswordLegendForm mt-5'>
@@ -37,6 +38,7 @@ export default class index extends Component {
             </div>
           </Col>
           <Col lg={5} className='forgetPasswordForm'>
+            <div className='registerFormImg'><img src={LogoPurple} alt='...' /></div>
             <div className='forgetPasswordFormTitle'>Fill your complete email</div>
             <div className='forgetPasswordFormSubtitle'>we{"'"}ll send a link to your email shortly</div>
             <div className='mb-5'>
