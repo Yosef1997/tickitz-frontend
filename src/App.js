@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { HashRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import { Provider } from 'react-redux'
 import persistedStore from './Redux/store'
@@ -25,7 +25,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-        <HashRouter>
+        <BrowserRouter basename='/React'>
         <ScrollToTop />
           <Switch>
             <Route path="/" exact component={Home} />
@@ -40,7 +40,7 @@ class App extends Component {
             <PrivateRoute path="/movie/seat/payment/ticket" exact privateComponent={Ticket} />
             <PrivateRoute path="/profile" privateComponent={Profile} />
           </Switch>
-        </HashRouter>
+        </BrowserRouter>
         </PersistGate>
       </Provider>
 
