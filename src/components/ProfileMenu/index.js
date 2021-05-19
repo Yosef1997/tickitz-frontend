@@ -9,14 +9,18 @@ import OrderHIstory from '../OrderHistory'
 export default class index extends Component {
   render () {
     return (
-      <Container fluid className='profile'>
-        <Router>
+      <Router>
+        <div className='profileMenu d-lg-none'>
+          <Link to='/profile' className='profileMenuBtn mr-5'><div>Account Settings</div></Link>
+          <Link to='/profile/orderhistory' className='profileMenuBtn'><div>Order History</div></Link>
+        </div>
+        <Container fluid className='profile'>
           <Row>
             <Col lg={4}>
               <ProfileCard />
             </Col>
             <Col lg={8}>
-              <div className='profileMenu'>
+              <div className='profileMenu d-none d-lg-flex'>
                 <Link to='/profile' className='profileMenuBtn mr-5'><div>Account Settings</div></Link>
                 <Link to='/profile/orderhistory' className='profileMenuBtn'><div>Order History</div></Link>
               </div>
@@ -32,8 +36,8 @@ export default class index extends Component {
               </div>
             </Col>
           </Row>
-        </Router>
-      </Container>
+        </Container>
+      </Router>
     )
   }
 }

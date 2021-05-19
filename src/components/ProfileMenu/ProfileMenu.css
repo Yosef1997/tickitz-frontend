@@ -38,4 +38,8 @@
   background-color: transparent;
 }
 
-@media only screen and (max-width: 992px) {}
+@media only screen and (max-width: 992px) {
+  .profile {
+    padding: 32px 24px 72px;
+  }
+}
