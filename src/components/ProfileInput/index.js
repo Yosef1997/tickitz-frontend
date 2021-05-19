@@ -40,6 +40,7 @@ class index extends Component {
       <Container fluid>
         <Formik
           initialValues={{
+            fullname: '',
             firstName: '',
             lastName: `${user.lastName === 'null' || user.lastName === '' ? '' : user.lastName}`,
             email: '',
@@ -55,13 +56,25 @@ class index extends Component {
             }, 500)
           }}
         >
-          {({ values, errors, handleChange, handleBlur, handleSubmit }) => (
+          {({ values, handleChange, handleBlur, handleSubmit }) => (
             <>
               <Row>
                 <Col className='ProfileInputForm'>
                   <div className='ProfileInputTitle'>Details Information</div>
-                  <Row>
+                  <Row className='d-lg-none'>
                     <Col>
+                      <Input
+                        label='Full Name'
+                        type='text'
+                        value={values.firstName}
+                        onChange={handleChange('fullName')}
+                        onBlur={handleBlur('fullName')}
+                        placeholder={user.firstName === 'null' ? 'Write your full name' : `${user.firstName} ${user.lastName === 'null' ? '' : user.lastName}`}
+                      />
+                    </Col>
+                  </Row>
+                  <Row className='d-none d-lg-flex'>
+                    <Col lg={6}>
                       <Input
                         label='First Name'
                         type='text'
@@ -71,7 +84,7 @@ class index extends Component {
                         placeholder={user.firstName === 'null' ? 'Write your first name' : user.firstName}
                       />
                     </Col>
-                    <Col>
+                    <Col lg={6}>
                       <Input
                         label='Last Name'
                         type='text'
@@ -82,8 +95,8 @@ class index extends Component {
                       />
                     </Col>
                   </Row>
-                  <Row className='mt-3'>
-                    <Col>
+                  <Row>
+                    <Col lg={6} className='mt-3'>
                       <Input
                         label='E-mail'
                         type='email'
@@ -93,7 +106,7 @@ class index extends Component {
                         placeholder={user.email === 'null' ? 'Write your email' : user.email}
                       />
                     </Col>
-                    <Col>
+                    <Col lg={6} className='mt-3'>
                       <InputNumber
                         label='Phone Number'
                         type='text'
@@ -108,9 +121,9 @@ class index extends Component {
               </Row>
               <Row>
                 <Col className='ProfileInputForm'>
-                  <div className='ProfileInputTitle'>Account and Privacy</div>
+                  <div className='ProfileInputTitle mb-4'>Account and Privacy</div>
                   <Row>
-                    <Col>
+                    <Col lg={6} className='mt-3'>
                       <InputPassword
                         label='New Password'
                         type='password'
@@ -120,7 +133,7 @@ class index extends Component {
                         placeholder='Write your new password'
                       />
                     </Col>
-                    <Col>
+                    <Col lg={6} className='mt-3'>
                       <InputPassword
                         label='Confirm Password'
                         type='password'
@@ -155,19 +168,19 @@ class index extends Component {
                   )
                 : (
                   <>
-                  {
-                    values.firstName === '' && values.lastName === '' && values.email === '' && values.phoneNumber === '' && values.newPassword === '' && values.repeatPassword === ''
-                      ? (
-                        <div>
-                          < Button variant='secondary' disabled className="ProfileInputBtn">Update changes</Button>
-                        </div>
-                        )
-                      : (
-                        <div>
-                          < Button variant='outline-light' onClick={handleSubmit} className="ProfileInputBtn">Update changes</Button>
-                        </div>
-                        )
-                  }
+                    {
+                      values.firstName === '' && values.lastName === '' && values.email === '' && values.phoneNumber === '' && values.newPassword === '' && values.repeatPassword === ''
+                        ? (
+                          <div>
+                            < Button variant='secondary' disabled className="ProfileInputBtn">Update changes</Button>
+                          </div>
+                          )
+                        : (
+                          <div>
+                            < Button variant='outline-light' onClick={handleSubmit} className="ProfileInputBtn">Update changes</Button>
+                          </div>
+                          )
+                    }
                   </>
                   )
               }
