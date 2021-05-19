@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Container, Row, Col, Button, Image } from 'react-bootstrap'
 import { Link, withRouter } from 'react-router-dom'
 import { Formik } from 'formik'
 import moment from 'moment'
@@ -52,134 +52,158 @@ class index extends Component {
     const { user } = this.props.auth
     const { detailMovie, detailDate, detailTime, detailCinema, seatOrder } = this.props.order
     return (
-      <Container fluid className='payment'>
-        <Formik
-          initialValues={{
-            fullName: `${user.firstName === 'null' && user.lastName === 'null' ? '' : `${user.firstName} ${user.lastName === 'null' ? '' : user.lastName}`}`,
-            email: `${user.email}`,
-            phoneNumber: `${user.phoneNumber === 'null' ? '' : user.phoneNumber}`
-          }}
-          validate={(values) => this.paymentValidation(values)}
-          onSubmit={(values, { resetForm }) => {
-            this.setState({ isLoading: true })
-            this.handlePay(values)
-            setTimeout(() => {
-              resetForm()
-            }, 500)
-          }}
-        >
-          {({ values, errors, handleChange, handleBlur, handleSubmit }) => (
-            <>
-              <Row>
-                <Col lg={8}>
-                  <div className='paymentTitle orderWeb'>Payment Info</div>
-                  <div className='paymentForm'>
-                    <div className='paymentDetail'>
-                      <div className='paymentDetail1'>Date & time</div>
-                      <div className='paymentDetail2'>{`${moment(detailDate.date).format('dddd, DD MMMM YYYY')} at ${detailTime.time}`}</div>
+      <>
+        <div className='orderTotalPayment'>
+          <div className='paymentDetail1'>Total Payment</div>
+          <div className='paymentDetail2'>{`$${seatOrder.price},00`}</div>
+        </div>
+        <Container fluid className='payment'>
+          <Formik
+            initialValues={{
+              fullName: `${user.firstName === 'null' && user.lastName === 'null' ? '' : `${user.firstName} ${user.lastName === 'null' ? '' : user.lastName}`}`,
+              email: `${user.email}`,
+              phoneNumber: `${user.phoneNumber === 'null' ? '' : user.phoneNumber}`
+            }}
+            validate={(values) => this.paymentValidation(values)}
+            onSubmit={(values, { resetForm }) => {
+              this.setState({ isLoading: true })
+              this.handlePay(values)
+              setTimeout(() => {
+                resetForm()
+              }, 500)
+            }}
+          >
+            {({ values, errors, handleChange, handleBlur, handleSubmit }) => (
+              <>
+                <Row>
+                  <Col lg={8}>
+                    <div className='paymentTitle orderWeb'>Payment Info</div>
+                    <div className='paymentForm orderWeb'>
+                      <div className='paymentDetail'>
+                        <div className='paymentDetail1'>Date & time</div>
+                        <div className='paymentDetail2'>{`${moment(detailDate.date).format('dddd, DD MMMM YYYY')} at ${detailTime.time}`}</div>
+                      </div>
+                      <div className='paymentDetail'>
+                        <div className='paymentDetail1'>Movie title</div>
+                        <div className='paymentDetail2'>{detailMovie.name}</div>
+                      </div>
+                      <div className='paymentDetail'>
+                        <div className='paymentDetail1'>Cinema name</div>
+                        <div className='paymentDetail2'>{`${detailCinema.name} Cinema`}</div>
+                      </div>
+                      <div className='paymentDetail'>
+                        <div className='paymentDetail1'>Number of tickets</div>
+                        <div className='paymentDetail2'>{`${seatOrder.seat.length} pieces`}</div>
+                      </div>
+                      <div className='paymentDetail border-0'>
+                        <div className='paymentDetail1'>Total payment</div>
+                        <div className='paymentDetail2'>{`$${seatOrder.price},00`}</div>
+                      </div>
                     </div>
-                    <div className='paymentDetail'>
-                      <div className='paymentDetail1'>Movie title</div>
-                      <div className='paymentDetail2'>{detailMovie.name}</div>
-                    </div>
-                    <div className='paymentDetail'>
-                      <div className='paymentDetail1'>Cinema name</div>
-                      <div className='paymentDetail2'>{`${detailCinema.name} Cinema`}</div>
-                    </div>
-                    <div className='paymentDetail'>
-                      <div className='paymentDetail1'>Number of tickets</div>
-                      <div className='paymentDetail2'>{`${seatOrder.seat.length} pieces`}</div>
-                    </div>
-                    <div className='paymentDetail border-0'>
-                      <div className='paymentDetail1'>Total payment</div>
-                      <div className='paymentDetail2'>{`$${seatOrder.price},00`}</div>
-                    </div>
-                  </div>
 
-                  <div className='paymentTitle orderWeb'>Choose a Payment Method</div>
-                  <div className='paymentForm'>
-                    <div className='paymentBtnForm'>
-                      {[BCA, BRI, Dana, GooglePay].map((logo, idx) => {
-                        return (
-                          <>
-                            <Button className='paymentBtn' key={idx}>
-                              <img src={logo} fluid />
-                            </Button>
-                          </>
-                        )
-                      })}
+                    <div className='paymentTitle orderWeb'>Choose a Payment Method</div>
+                    <div className='paymentTitle d-lg-none'>Payment Method</div>
+                    <div className='paymentForm'>
+                      <div className='paymentBtnForm'>
+                        {[BCA, BRI, Dana, GooglePay].map((logo, idx) => {
+                          return (
+                            <>
+                              {logo === Dana
+                                ? <>
+                                  <Button className='paymentBtn d-none d-md-block' key={idx}>
+                                    <Image src={logo} fluid={true} />
+                                  </Button>
+                                </>
+                                : <>
+                                  <Button className='paymentBtn' key={idx}>
+                                    <Image src={logo} fluid={true} />
+                                  </Button>
+                                </>}
+                            </>
+                          )
+                        })}
+                      </div>
+                      <div className='paymentBtnForm'>
+                        {[GoPay, OVO, PayPal, Visa].map((logo, idx) => {
+                          return (
+                            <>
+                              {logo === GoPay
+                                ? <>
+                                  <Button className='paymentBtn d-none d-md-block' key={idx}>
+                                    <Image src={logo} fluid={true} />
+                                  </Button>
+                                </>
+                                : <>
+                                  <Button className='paymentBtn' key={idx}>
+                                    <Image src={logo} fluid={true} />
+                                  </Button>
+                                </>}
+                            </>
+
+                          )
+                        })}
+                      </div>
+                      <div className='paymentOr'>or</div>
+                      <div className='paymentOr'>Pay via cash. <Link className='paymentCash'>See how it work</Link></div>
                     </div>
-                    <div className='paymentBtnForm'>
-                      {[GoPay, OVO, PayPal, Visa].map((logo, idx) => {
-                        return (
-                          <>
-                            <Button className='paymentBtn' key={idx}>
-                              <img src={logo} fluid />
-                            </Button>
-                          </>
-                        )
-                      })}
+                  </Col>
+                  <Col lg={4}>
+                    <div className='paymentTitle orderWeb'>Personal Info</div>
+                    <div className='PersonalInfoForm'>
+                      <div className='mb-4'>
+                        <Input
+                          label='Full Name'
+                          type='text'
+                          value={values.fullName}
+                          onChange={handleChange('fullName')}
+                          onBlur={handleBlur('fullName')}
+                          placeholder='Write your full name' />
+                        {errors.fullName ? (<div className='textError'>{errors.fullName}</div>) : (null)}
+                      </div>
+                      <div className='mb-4'>
+                        <Input
+                          label='Email'
+                          type='email'
+                          value={values.email}
+                          onChange={handleChange('email')}
+                          onBlur={handleBlur('email')}
+                          placeholder='Write your email' />
+                        {errors.email ? (<div className='textError'>{errors.email}</div>) : (null)}
+                      </div>
+                      <div className='mb-4'>
+                        <InputNumber
+                          label='Phone Number'
+                          type='text'
+                          value={values.phoneNumber}
+                          onChange={handleChange('phoneNumber')}
+                          onBlur={handleBlur('phoneNumber')}
+                          placeholder='Write your phone number' />
+                        {errors.phoneNumber ? (<div className='textError'>{errors.phoneNumber}</div>) : (null)}
+                      </div>
+                      <div className='PersonalInfoCaution'>
+                        <img src={Warning} className='mr-3' />
+                        <div className='PersonalInfoCautionText'>Fill your data correctly.</div>
+                      </div>
                     </div>
-                    <div className='paymentOr'>or</div>
-                    <div className='paymentOr'>Pay via cash. <Link className='paymentCash'>See how it work</Link></div>
-                  </div>
-                </Col>
-                <Col lg={4}>
-                  <div className='paymentTitle orderWeb'>Personal Info</div>
-                  <div className='PersonalInfoForm'>
-                    <div className='mb-4'>
-                      <Input
-                        label='Full Name'
-                        type='text'
-                        value={values.fullName}
-                        onChange={handleChange('fullName')}
-                        onBlur={handleBlur('fullName')}
-                        placeholder='Write your full name' />
-                      {errors.fullName ? (<div className='textError'>{errors.fullName}</div>) : (null)}
+                  </Col>
+                </Row>
+                <Row>
+                  <Col lg={8}>
+                    <div className='payBtnFrom'>
+                      <Link to='/movie/seat' className='paymentBackStep'>Prvious step</Link>
+                      {!errors.fullName && !errors.phoneNumber && values.fullName !== '' && values.phoneNumber !== ''
+                        ? (<Button onClick={handleSubmit} className='paymentPay'>Pay your order</Button>
+                          )
+                        : (<Button variant='secondary' disabled className='paymentPay'>Pay your order</Button>
+                          )}
                     </div>
-                    <div className='mb-4'>
-                      <Input
-                        label='Email'
-                        type='email'
-                        value={values.email}
-                        onChange={handleChange('email')}
-                        onBlur={handleBlur('email')}
-                        placeholder='Write your email' />
-                      {errors.email ? (<div className='textError'>{errors.email}</div>) : (null)}
-                    </div>
-                    <div className='mb-4'>
-                      <InputNumber
-                        label='Phone Number'
-                        type='text'
-                        value={values.phoneNumber}
-                        onChange={handleChange('phoneNumber')}
-                        onBlur={handleBlur('phoneNumber')}
-                        placeholder='Write your phone number' />
-                      {errors.phoneNumber ? (<div className='textError'>{errors.phoneNumber}</div>) : (null)}
-                    </div>
-                    <div className='PersonalInfoCaution'>
-                      <img src={Warning} className='mr-3' />
-                      <div>Fill your data correctly.</div>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col lg={8}>
-                  <div className='payBtnFrom'>
-                    <Link to='/movie/seat' className='paymentBackStep'>Prvious step</Link>
-                    {!errors.fullName && !errors.phoneNumber && values.fullName !== '' && values.phoneNumber !== ''
-                      ? (<Button onClick={handleSubmit} className='paymentPay'>Pay your order</Button>
-                        )
-                      : (<Button variant='secondary' disabled className='paymentPay'>Pay your order</Button>
-                        ) }
-                  </div>
-                </Col>
-              </Row>
-            </>
-          )}
-        </Formik>
-      </Container>
+                  </Col>
+                </Row>
+              </>
+            )}
+          </Formik>
+        </Container>
+      </>
     )
   }
 }

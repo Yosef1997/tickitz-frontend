@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import './OrderSeat.css'
+import RowSeat from '../../assets/forwardarrow.png'
+import ColumnSeat from '../../assets/rightarrow.png'
 import OrderInfo from '../OrderInfo'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { seatOrder, allSoldSeat } from '../../Redux/Action/order'
 
 class index extends Component {
-  state={
+  state = {
     seatSold: [],
     selectedSeat: [],
     price: 0
@@ -17,7 +19,7 @@ class index extends Component {
     const { token } = this.props.auth
     await this.props.allSoldSeat(token, detailMovie.name, detailDate.date, detailLocation.name, detailTime.time, detailCinema.name)
   }
-  handleCheckOut =async () => {
+  handleCheckOut = async () => {
     await this.props.seatOrder(this.state.selectedSeat, this.state.price)
     this.props.history.push('/movie/seat/payment')
   }
@@ -65,16 +67,16 @@ class index extends Component {
             </div>
             <div className='orderTitle'>Choose Your Seat</div>
             <div className='orderSeatForm'>
-              <div className='orderScreenText'>Screen</div>
+              <div className='orderScreenText d-sm-none'>Screen</div>
               <div className='orderScreenBar' />
-              <Row>
-                <Col sm={6}>
+              <Row className='orderSeatSequence'>
+                <Col>
                   <Card className="border-0">
                     <Card.Body className="ml-auto">
                       {['A', 'B', 'C', 'D', 'E', 'F', 'G'].map((row, idx) => {
                         return (
                           <Row key={idx}>
-                            <div className="seat-layout">{row}</div>
+                            <div className="seat-layout column">{row}</div>
                             {[1, 2, 3, 4, 5, 6, 7].map((column, idx) => {
                               return (
                                 <>
@@ -89,24 +91,24 @@ class index extends Component {
                           </Row>
                         )
                       })}
-                      <Row className="gap-2 my-2">
+                      <Row className="gap-2">
                         <div className="seat-layout text-muted" />
                         {[1, 2, 3, 4, 5, 6, 7].map((num, idx) => {
                           return (
-                            <div key={idx} className="seat-layout badge text-muted">{num}</div>
+                            <div key={idx} className="seat-layout badge text-muted column">{num}</div>
                           )
                         })}
                       </Row>
                     </Card.Body>
                   </Card>
                 </Col>
-                <Col lg={6}>
+                <Col>
                   <Card className="border-0">
                     <Card.Body>
                       {['A', 'B', 'C', 'D', 'E', 'F', 'G'].map((row, idx) => {
                         return (
                           <Row key={idx}>
-                            <div className="seat-layout text-center d-lg-none">{row}</div>
+                            <div className="seat-layout text-center column d-lg-none">{row}</div>
                             {[8, 9, 10, 11, 12, 13, 14].filter(col => (row === 'F' && col !== 11) || row !== 'F').map(column => {
                               return (
                                 <>
@@ -135,11 +137,11 @@ class index extends Component {
                         )
                       })
                       }
-                      <Row className="gap-2 my-2">
+                      <Row className="gap-2">
                         <div className="seat-layout text-muted d-lg-none" />
                         {[8, 9, 10, 11, 12, 13, 14].map((num, idx) => {
                           return (
-                            <div key={idx} className="seat-layout badge text-muted">{num}</div>
+                            <div key={idx} className="seat-layout badge text-muted column">{num}</div>
                           )
                         })}
                       </Row>
@@ -166,6 +168,40 @@ class index extends Component {
                   <div>Sold</div>
                 </div>
               </div>
+              <div className='orderLegendMobile mt-3'>
+                <div>
+                  <div className='orderLegendDetail mb-3'>
+                    <div><img src={RowSeat} /></div>
+                    <div className='seatLegend'>A - G</div>
+                  </div>
+                  <div className='orderLegendDetail mb-3'>
+                    <div className='bg-gray-light' />
+                    <div>Available</div>
+                  </div>
+                  <div className='orderLegendDetail'>
+                    <div className='bg-theme' />
+                    <div>Selected</div>
+                  </div>
+                </div>
+                <div>
+                  <div className='orderLegendDetail mb-3'>
+                    <div><img src={ColumnSeat} /></div>
+                    <div className='seatLegend'>1 - 14</div>
+                  </div>
+                  <div className='orderLegendDetail mb-3'>
+                    <div className='bg-pink' />
+                    <div>Love nest</div>
+                  </div>
+                  <div className='orderLegendDetail'>
+                    <div className='bg-dark-ash' />
+                    <div>Sold</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='orderSelectedSeatMobile'>
+              <div className='orderSeatingKey'>Choosed</div>
+              <div className='orderSeatingKey'>{selectedSeat.join(',')}</div>
             </div>
             <div className='orderFormBtn'>
               <Link to='/' className='orderChangeMovie'>Change your movie</Link>

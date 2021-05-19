@@ -70,6 +70,12 @@
   margin: 8px auto 24px;
 }
 
+.orderSeatSequence {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 .seat-layout{
   width: 26px !important;
   height: 26px !important;
@@ -93,6 +99,15 @@
   background-color:#D6D8E7 !important;
 }
 
+.btn-seat-layout_love-nest{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 60px !important;
+  height: 26px !important;
+  border-radius: 8px !important;
+  background-color: #F589D7 !important;
+}
+
 input[type="checkbox"]{
   -webkit-appearance: none;
   appearance: none;
@@ -110,15 +125,6 @@ input[type="checkbox"]:disabled{
   appearance: none;
   background-color: #6E7191 !important;
   cursor: unset;
-}
-
-.btn-seat-layout_love-nest{
-  -webkit-appearance: none;
-  appearance: none;
-  width: 60px !important;
-  height: 26px !important;
-  border-radius: 8px !important;
-  background-color: #F589D7 !important;
 }
 
 .bg-gray-light{
@@ -165,13 +171,30 @@ input[type="checkbox"]:disabled{
 
 .orderLegend {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   padding: 21px 117px;
+}
+
+.orderLegendMobile {
+  display: none;
+}
+
+.seatLegend {
+  color: #4E4B66;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  margin-left: 22px;
 }
 
 .orderLegendDetail {
   display: flex;
   align-items: center;
+}
+
+.orderSelectedSeatMobile {
+  display: none;
 }
 
 .orderFormBtn {
@@ -208,14 +231,69 @@ input[type="checkbox"]:disabled{
 }
 
 @media only screen and (max-width: 992px) {
+  .column {
+    display: none;
+  }
   .orderSeat {
     padding: 32px 24px 75px 24px;
   }
   .orderWeb {
     display: none;
   }
+  .orderSeatForm {
+    padding: 41px 0px;
+    text-align: left;
+  }
+  .orderScreenText {
+    display: none;  
+  }
   .orderScreenBar {
     width: 295px;
     height: 8px;
+  }
+  .seat-layout{
+    width: 14px !important;
+    height: 14px !important;
+    /* border-radius: 2px; */
+    margin: 2.5px;
+  }
+  .seat-layout_love-nest{
+    width: 34px !important;
+    height: 14px !important;
+    border-radius: 2px;
+    margin: 2px;
+  }
+  .btn-seat-layout{
+    width: 14px !important;
+    height: 14px !important;
+    border-radius: 2px !important;
+  }
+  .btn-seat-layout_love-nest{
+    width: 34px !important;
+    height: 14px !important;
+    border-radius: 2px !important;
+  }
+  .orderSeatingKey {
+    font-size: 16px;
+    margin-left: 10px;
+  }
+  .orderLegendMobile {  
+    display: flex;
+    justify-content: space-around;
+  }
+  .orderSelectedSeatMobile {
+    background-color: white;
+    margin-top: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+  }
+  .orderChangeMovie {
+    display: none;
+  }
+  .orderCheckOut {
+    width: 100%;
   }
 }

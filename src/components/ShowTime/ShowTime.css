@@ -65,4 +65,7 @@
   .dropDown {
     margin: 20px 12px 0px 12px;
   }
+  .showTimeCinemaText {
+    font-size: 18px;
+  }
 }

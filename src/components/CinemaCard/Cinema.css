@@ -135,7 +135,7 @@
 
 @media only screen and (max-width: 992px) {
   .cinema {
-    padding: 0px auto;
+    padding: 0px ;
   }
   .cinemaCard {
     width: 327px;
