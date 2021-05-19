@@ -32,15 +32,16 @@ class index extends Component {
                     <Row key={item.id} className='orderHistory'>
                       <Col>
                         <div className='orderHistoryForm'>
-                          <div className='my-5'>
+                          <div>
+                            <img src={Logo} className='orderHistoryImg orderHistoryMobile mb-3' />
                             <div className='orderHistorySchedule'>{`${moment(item.date).format('dddd, DD MMMM YYYY')} - ${item.time}`}</div>
                             <div className='orderHistoryMovie'>{item.movie}</div>
                           </div>
-                          <img src={Logo} className='orderHistoryImg' />
+                          <img src={Logo} className='orderHistoryImg orderHistoryWeb' />
                         </div>
-                        <div className='orderHistoryForm my-4 border-0'>
+                        <div className='orderHistoryForm border-0'>
                           <Button className='orderHistoryBtn'>Ticket in active</Button>
-                          <Link className='orderHistoryDetail'>Show Details</Link>
+                          <Link className='orderHistoryDetail orderHistoryWeb'>Show Details</Link>
                         </div>
                       </Col>
                     </Row>

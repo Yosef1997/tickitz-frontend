@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 40px;
+  padding: 40px 32px;
   border-bottom: 1px solid #DEDEDE;
 }
 
@@ -78,4 +78,24 @@
   margin-top: 20px;
 }
 
-@media only screen and (max-width: 992px) {}
+.orderHistoryMobile {
+  display: none;
+}
+
+@media only screen and (max-width: 992px) {
+  .orderHistoryMobile {
+    display: block;
+  }
+  .orderHistoryWeb {
+    display: none;
+  }
+  .orderHistoryForm {
+    padding: 25px 10px 32px;
+  }
+  .orderHistoryMovie {
+    font-size: 18px;
+  }
+  .orderHistoryBtn {
+    width: 100%;
+  }
+}
