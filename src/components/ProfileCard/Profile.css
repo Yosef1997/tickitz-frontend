@@ -182,4 +182,11 @@
 
 
 
-@media only screen and (max-width: 992px) {}
+@media only screen and (max-width: 992px) {
+  .circle1 {
+    left: 170px;
+  }
+  .star {
+    left: 180px;
+  }
+}
