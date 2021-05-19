@@ -3,6 +3,7 @@ import './Ticket.css'
 import { Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
+import Mobile from './mobile'
 import { connect } from 'react-redux'
 import Logo from '../../assets/tickitzwhite.png'
 import Barcode from '../../assets/QRBarcode.png'
@@ -81,8 +82,8 @@ class index extends Component {
                 Print
               </Link>
               </div>
-
             </div>
+            <Mobile className='ticketPaperMobile' />
           </Col>
         </Row>
       </Container>
