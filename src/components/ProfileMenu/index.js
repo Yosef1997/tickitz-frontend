@@ -14,7 +14,23 @@ export default class index extends Component {
           <Link to='/profile' className='profileMenuBtn mr-5'><div>Account Settings</div></Link>
           <Link to='/profile/orderhistory' className='profileMenuBtn'><div>Order History</div></Link>
         </div>
-        <Container fluid className='profile'>
+        <Container fluid className='profile d-lg-none'>
+          <Row>
+            <Col>
+              <Switch>
+                <Route exact path="/profile">
+                  <ProfileCard />
+                  <Profile />
+                </Route>
+                <Route exact path="/profile/orderhistory">
+                  <OrderHIstory />
+                </Route>
+              </Switch>
+            </Col>
+          </Row>
+        </Container>
+
+        <Container fluid className='profile d-none d-lg-block'>
           <Row>
             <Col lg={4}>
               <ProfileCard />
