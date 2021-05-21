@@ -9,6 +9,7 @@ const { REACT_APP_API_URL: URL } = process.env
 
 class index extends Component {
   async componentDidMount () {
+    console.log('tes componentdidMount')
     const { token } = this.props.auth
     await this.props.nowShow(token, `${new Date().getFullYear()}-0${new Date().getMonth() + 1}`)
   }

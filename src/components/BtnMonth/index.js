@@ -40,12 +40,12 @@ class BtnMonth extends Component {
     const { month, radioValue } = this.state
     return (
       <Col className="colMonth">
-        {month.map((month, idx) => {
+        {month.map((month) => {
           return (
             <>
             <ButtonGroup toggle>
               <ToggleButton
-                key={idx}
+                key={month.value}
                 type="radio"
                 className="btnMonth"
                 name="month"
