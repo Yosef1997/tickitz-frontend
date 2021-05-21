@@ -33,7 +33,7 @@ class index extends Component {
     return errors
   }
 
-  async doSignUp (values) {
+  async doSignUp(values) {
     this.setState({ isLoading: true })
     await this.props.signup(values.email, values.password)
     setTimeout(() => {
@@ -47,7 +47,7 @@ class index extends Component {
     }
   }
 
-  render () {
+  render() {
     const { isMessage, isLoading, checked } = this.state
 
     return (
@@ -106,7 +106,7 @@ class index extends Component {
                     {errors.email
                       ? (
                         <div className='textError'>{errors.email}</div>
-                        )
+                      )
                       : null}
                   </div>
                   <div className='mb-3'>
@@ -121,7 +121,7 @@ class index extends Component {
                     {errors.password
                       ? (
                         <div className='textError'>{errors.password}</div>
-                        )
+                      )
                       : null}
                   </div>
                   <div className='mb-3'>
@@ -132,32 +132,34 @@ class index extends Component {
                   </div>
                   {this.props.auth.errorMsg !== '' && isMessage
                     ? (
-                    <div className='textError'>
-                      {this.props.auth.errorMsg}
-                    </div>
-                      )
+                      <div className='textError'>
+                        {this.props.auth.errorMsg}
+                      </div>
+                    )
                     : null}
                   {isLoading === true
                     ? (
-                    <>
-                      <Spinner animation="border" variant="dark" />
-                    </>
-                      )
+                      <>
+                        <div className='d-flex justify-content-center'>
+                          <Spinner animation="border" variant="dark" />
+                        </div>
+                      </>
+                    )
                     : (
-                    <>
-                      {(!values.email || !values.password) || errors.password || checked === false
-                        ? (
-                        <div>
-                          < Button variant="secondary" className="registerFormBtn" disabled >Join for free now</Button>
-                        </div>
+                      <>
+                        {(!values.email || !values.password) || errors.password || checked === false
+                          ? (
+                            <div>
+                              < Button variant="secondary" className="registerFormBtn" disabled >Join for free now</Button>
+                            </div>
                           )
-                        : (
-                        <div>
-                          < Button onClick={handleSubmit} className="registerFormBtn">Join for free now</Button>
-                        </div>
+                          : (
+                            <div>
+                              < Button onClick={handleSubmit} className="registerFormBtn">Join for free now</Button>
+                            </div>
                           )}
-                    </>
-                      )}
+                      </>
+                    )}
                 </>
               )}
             </Formik>

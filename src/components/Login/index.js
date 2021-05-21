@@ -18,7 +18,7 @@ class index extends Component {
     isLoading: false
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.setState({ isMessage: true })
     setTimeout(() => {
       this.setState({ isMessage: false })
@@ -39,7 +39,7 @@ class index extends Component {
     return errors
   }
 
-  async doSignIn (values) {
+  async doSignIn(values) {
     this.setState({ isLoading: true })
     await this.props.signin(values.email, values.password)
     setTimeout(() => {
@@ -53,7 +53,7 @@ class index extends Component {
     }
   }
 
-  render () {
+  render() {
     const { isMessage, isLoading } = this.state
 
     return (
@@ -77,7 +77,7 @@ class index extends Component {
                 <Alert variant='success' className='textSuccess'>
                   {this.props.auth.message}
                 </Alert>
-                )
+              )
               : null}
             <Formik
               initialValues={{
@@ -107,7 +107,7 @@ class index extends Component {
                     {errors.email
                       ? (
                         <div className='textError'>{errors.email}</div>
-                        )
+                      )
                       : null}
                   </div>
                   <div className='mb-3'>
@@ -122,7 +122,7 @@ class index extends Component {
                     {errors.password
                       ? (
                         <div className='textError'>{errors.password}</div>
-                        )
+                      )
                       : null}
                   </div>
                   {this.props.auth.errorMsg !== '' && isMessage
@@ -130,14 +130,16 @@ class index extends Component {
                       <div className='textError'>
                         {this.props.auth.errorMsg}
                       </div>
-                      )
+                    )
                     : null}
                   {isLoading === true
                     ? (
                       <>
-                        <Spinner animation="border" variant="dark" />
+                        <div className='d-flex justify-content-center'>
+                          <Spinner animation="border" variant="dark" />
+                        </div>
                       </>
-                      )
+                    )
                     : (
                       <>
                         {(!values.email || !values.password) || errors.password
@@ -145,14 +147,14 @@ class index extends Component {
                             <div>
                               < Button variant="secondary" className="loginFormBtn" disabled >Sign In</Button>
                             </div>
-                            )
+                          )
                           : (
                             <div>
                               < Button onClick={handleSubmit} className="loginFormBtn">Sign In</Button>
                             </div>
-                            )}
+                          )}
                       </>
-                      )}
+                    )}
                 </>
               )}
             </Formik>
