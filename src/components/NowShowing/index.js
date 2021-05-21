@@ -8,7 +8,7 @@ import { nowShow, searchMovie, detailMovie } from '../../Redux/Action/movie'
 const { REACT_APP_API_URL: URL } = process.env
 
 class index extends Component {
-  async componentDidMount () {
+  async componentDidMount() {
     console.log('tes componentdidMount')
     const { token } = this.props.auth
     await this.props.nowShow(token, `${new Date().getFullYear()}-0${new Date().getMonth() + 1}`)
@@ -26,7 +26,7 @@ class index extends Component {
     this.props.history.push('viewall')
   }
 
-  render () {
+  render() {
     const { nowShow } = this.props.movie
     return (
       <Container fluid className="nowShow">
@@ -42,15 +42,19 @@ class index extends Component {
         </Row>
         <Row>
           <Col className="nowShow-col3">
-            {nowShow.map((item) => {
-              return (
-                <>
-                  <div key={item.id} onClick={() => this.handleMovie(item.id)} className="nowShow-card">
-                    <img src={`${URL}/upload/movie/${item.picture}`} alt='...' className="nowShow-img" />
-                  </div>
-                </>
-              )
-            })}
+            {nowShow === null ? <div>Movie Not Found</div> :
+              <>
+                {nowShow.map((item) => {
+                  return (
+                    <>
+                      <div key={item.id} onClick={() => this.handleMovie(item.id)} className="nowShow-card">
+                        <img src={`${URL}/upload/movie/${item.picture}`} alt='...' className="nowShow-img" />
+                      </div>
+                    </>
+                  )
+                })}
+              </>
+            }
           </Col>
         </Row>
       </Container>
